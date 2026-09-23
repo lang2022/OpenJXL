@@ -14,8 +14,10 @@ self.onmessage = async (e) => {
     if (!img || !img.width) { self.postMessage({ id, ok: false, errorCode: 'CORRUPT' }); return; }
     self.postMessage({ id, ok: true, width: img.width, height: img.height, data: img.data.buffer }, [img.data.buffer]);
   } catch (err) {
+    // V1 policy: single behavior. The decoder emits the first frame only;
+    // anything it cannot decode surfaces as CORRUPT (fail loudly, never silent).
     const s = String((err && err.message) || err);
-    const code = /anim/i.test(s) ? 'ANIMATED' : /large|memory|size/i.test(s) ? 'TOO_LARGE' : 'CORRUPT';
+    const code = /large|memory|size/i.test(s) ? 'TOO_LARGE' : 'CORRUPT';
     self.postMessage({ id, ok: false, errorCode: code });
   }
 };

@@ -7,21 +7,21 @@ import Base from '../layouts/Base.astro';
 <h1>Open <span class="grad">JPEG XL</span> files right in your browser</h1>
 <p class="lead">Got a <strong>.jxl</strong> file you cannot open? Drop it below to preview it on your device, then save as JPG or PNG when you need to share it.</p>
 <p id="tagline2" hidden></p>
-<div><span id="status" class="pill"><span class="dot"></span><span>Checking?</span></span></div>
+<div><span id="status" class="pill"><span class="dot"></span><span>Checking...</span></span></div>
 </section>
 
 <section class="tool-card" aria-label="JXL viewer">
-<div class="tool-head"><span class="step-n">1</span> Drop your .jxl file <span style="color:var(--muted);font-weight:500">? one file, decoded on this device</span></div>
+<div class="tool-head"><span class="step-n">1</span> Drop your .jxl file <span style="color:var(--muted);font-weight:500">- one file, decoded on this device</span></div>
 <div id="drop" tabindex="0" role="button" aria-label="Choose a .jxl file">
 <div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
 <div id="drop-title">Drop a .jxl file</div>
 <div id="drop-sub">or click to choose, paste also works</div>
-<div class="drop-kbd"><span class="kbd">.jxl</span><span class="kbd">drag &amp; drop</span><span class="kbd">Ctrl/? + V</span></div>
+<div class="drop-kbd"><span class="kbd">.jxl</span><span class="kbd">drag &amp; drop</span><span class="kbd">Ctrl+/ + V</span></div>
 <input id="file" type="file" accept=".jxl,image/jxl" hidden />
 </div>
 <p id="wasm-note"></p>
 <div id="err" hidden></div>
-<div id="loading" hidden><div class="spinner"></div><span id="loading-t">Decoding on this device?</span> <span id="secs">0</span>s</div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">Decoding on this device...</span> <span id="secs">0</span>s</div>
 <div id="result" hidden>
 <div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Preview &amp; export</div>
 <div class="result-grid">
@@ -50,7 +50,7 @@ import Base from '../layouts/Base.astro';
 </section>
 
 <section class="faq">
-<details open><summary>What is a .jxl file?</summary><p>A still image in the JPEG XL format -- efficient,, but not every app can open it. <a href="/how-to-open-jxl-file/">How to open -></a></p></details>
+<details open><summary>What is a .jxl file?</summary><p>A still image in the JPEG XL format -- efficient, but not every app can open it. <a href="/how-to-open-jxl-file/">How to open -></a></p></details>
 <details><summary>Is it safe to drop my file here?</summary><p>Yes. Decoding happens entirely in your browser. <a href="/privacy/">Privacy notes</a></p></details>
 <details><summary>Is Open JXL free?</summary><p>Yes, free for viewing and exporting JPG/PNG. No account, no watermark.</p></details>
 <details><summary>Why can't my browser open it?</summary><p>Native support varies by browser version. <a href="/jxl-browser-support/">Test this browser -></a></p></details>

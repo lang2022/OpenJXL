@@ -45,7 +45,7 @@ const zhAbs = SITE + zhPath;
 <body>
 <a class="skip-link" href="#main">{isZh?'跳到内容':'Skip to content'}</a>
 <header class="topbar"><div class="topbar-in">
-<a class="logo" href={isZh?'/zh/':'/'}><span class="logo-mark">JX</span>Open JXL</a>
+<a class="logo" href={isZh?'/zh/':'/'} aria-label="Open JXL home"><span class="logo-mark" aria-hidden="true">JX</span><span class="logo-text">Open JXL</span></a>
 <nav class="topnav">
 <a href={isZh?'/zh/how-to-open-jxl-file/':'/how-to-open-jxl-file/'}>{isZh?'如何打开':'How to open'}</a>
 <a href={isZh?'/zh/jxl-browser-support/':'/jxl-browser-support/'}>{isZh?'浏览器支持':'Browser support'}</a>
@@ -55,7 +55,7 @@ const zhAbs = SITE + zhPath;
 </div></header>
 <main id="main"><div id="lang-hint" hidden></div><slot /></main>
 <footer id="footer"><div class="foot-in">
-<div><strong>Open JXL</strong><small id="seo-foot"></small><small>Nothing is uploaded. / 文件不上传。</small></div>
+<div><strong>Open JXL</strong><small id="seo-foot">{isZh?'JPEG XL 是一种图片格式。Open JXL 是本地查看器，与车机摄像头或 Java 库无关。':'JPEG XL is an image format. Open JXL is a local viewer, not a camera app or Java library.'}</small><small>Nothing is uploaded. / 文件不上传。</small></div>
 <div class="foot-links">
 <a href={isZh?'/zh/how-to-open-jxl-file/':'/how-to-open-jxl-file/'}>{isZh?'如何打开':'How to open'}</a>
 <a href={isZh?'/zh/jxl-browser-support/':'/jxl-browser-support/'}>{isZh?'浏览器支持':'Support'}</a>

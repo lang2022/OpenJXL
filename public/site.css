@@ -9,6 +9,7 @@ a{color:var(--brand)}
 .topnav{margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
 .topnav a{text-decoration:none;color:#334155;font-size:14px;font-weight:600;padding:8px 12px;border-radius:10px}
 .topnav a:hover{background:#eef2ff;color:var(--brand)}
+.logo-text{margin-left:2px;white-space:nowrap}
 .lang-sw{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:8px}
 .lang-sw a{padding:7px 13px;font-size:13px}
 .lang-sw a.on{background:var(--ink);color:#fff}

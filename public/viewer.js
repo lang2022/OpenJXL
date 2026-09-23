@@ -36,7 +36,7 @@ function detectNative(){
   function toWasm(){ if(mode!=='unknown') return; mode='wasm'; setStatus(S.wasm); track('detect_wasm'); ensureWorker(); }
 }
 function ensureWorker(){ if(worker) return worker; try{ worker = new Worker('/jxl-worker.js', {type:'module'}); }catch(e){ setStatus(S.fail); track('detect_fail'); } return worker; }
-function showErr(msg){ try{ clearInterval(timer); var l=$('loading'); if(l) l.hidden=true; var e=$('err'); if(!e) return; e.hidden=false; e.textContent=msg; }catch(x){} try{ if(window.plausible) window.plausible('preview_fail'); }catch(x){} }
+function showErr(msg, code){ try{ clearInterval(timer); var l=$('loading'); if(l) l.hidden=true; var e=$('err'); if(!e) return; e.hidden=false; e.textContent=msg; }catch(x){} try{ if(window.plausible) window.plausible('preview_fail', {props:{error_code: code || 'UNKNOWN'}}); }catch(x){} }
 function fmt(n){ return n>1048576 ? (n/1048576).toFixed(1)+' MB' : Math.round(n/1024)+' KB'; }
 function dl(u,n){ var a=document.createElement('a'); a.href=u; a.download=n; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(u); },5000); }
 function exportFromNativeImg(type, quality, filename){
@@ -44,8 +44,8 @@ function exportFromNativeImg(type, quality, filename){
   try{
     c.width = img.naturalWidth; c.height = img.naturalHeight;
     var ctx = c.getContext('2d'); ctx.drawImage(img, 0, 0);
-    c.toBlob(function(b){ if(!b){ showErr(S.large); return; } track(type === 'image/jpeg' ? 'export_jpg' : 'export_png'); dl(URL.createObjectURL(b), filename); }, type, quality);
-  }catch(e){ showErr(S.large); }
+    c.toBlob(function(b){ if(!b){ showErr(S.large, 'TOO_LARGE'); return; } track(type === 'image/jpeg' ? 'export_jpg' : 'export_png'); dl(URL.createObjectURL(b), filename); }, type, quality);
+  }catch(e){ showErr(S.large, 'TOO_LARGE'); }
 }
 function doneMeta(w,h,size,how,kind,url,note){
   clearInterval(timer); $('loading').hidden=true; $('result').hidden=false;
@@ -62,12 +62,12 @@ function doneMeta(w,h,size,how,kind,url,note){
   $('dl-jpg').onclick=function(){
     if(kind==='native-img'){ exportFromNativeImg('image/jpeg', 0.92, lastName+'.jpg'); return; }
     var c=$('preview');
-    try{ c.toBlob(function(b){ if(!b){ showErr(S.large); return; } track('export_jpg'); dl(URL.createObjectURL(b), lastName+'.jpg'); },'image/jpeg',0.92); }catch(e){ showErr(S.large); }
+    try{ c.toBlob(function(b){ if(!b){ showErr(S.large, 'TOO_LARGE'); return; } track('export_jpg'); dl(URL.createObjectURL(b), lastName+'.jpg'); },'image/jpeg',0.92); }catch(e){ showErr(S.large, 'TOO_LARGE'); }
   };
   $('dl-png').onclick=function(){
     if(kind==='native-img'){ exportFromNativeImg('image/png', undefined, lastName+'.png'); return; }
     var c=$('preview');
-    try{ c.toBlob(function(b){ if(!b){ showErr(S.large); return; } track('export_png'); dl(URL.createObjectURL(b), lastName+'.png'); },'image/png'); }catch(e){ showErr(S.large); }
+    try{ c.toBlob(function(b){ if(!b){ showErr(S.large, 'TOO_LARGE'); return; } track('export_png'); dl(URL.createObjectURL(b), lastName+'.png'); },'image/png'); }catch(e){ showErr(S.large, 'TOO_LARGE'); }
   };
   track('preview_success');
 }
@@ -76,13 +76,13 @@ function drawWasm(res,size){
   try{
     c.width=res.width; c.height=res.height;
     var ctx=c.getContext('2d'); ctx.putImageData(new ImageData(new Uint8ClampedArray(res.data),res.width,res.height),0,0);
-  }catch(e){ showErr(S.large); return; }
+  }catch(e){ showErr(S.large, 'TOO_LARGE'); return; }
   c.hidden=false; $('preview-img').hidden=true; doneMeta(res.width,res.height,size, lang==='zh'?'本地解码':'Local decoder', 'wasm', null, S.frame);
 }
 function handleFile(f){
   if(!f) return;
   f.arrayBuffer().then(function(buf){
-    if(!looksJXL(buf)){ showErr(S.notjxl); return; }
+    if(!looksJXL(buf)){ showErr(S.notjxl, 'NOT_JXL'); return; }
     lastName = f.name.replace(/\.jxl$/i,'') || 'image';
     startT = performance.now(); $('err').hidden=true; $('result').hidden=true; $('loading').hidden=false;
     var t0=Date.now(); clearInterval(timer); timer=setInterval(function(){ $('secs').textContent=((Date.now()-t0)/1000).toFixed(0); },250);
@@ -100,10 +100,10 @@ function handleFile(f){
 function decodeWasm(buf,size){
   try{
     ensureWorker(); var w=worker; if(!w){ showErr(S.fail); return; } var id=Date.now()+Math.random();
-    var h=function(e){ if(e.data.id===id){ w.removeEventListener('message',h); var res=e.data; if(res.ok){ drawWasm(res,size); } else { var map={NOT_JXL:S.notjxl,CORRUPT:S.corrupt,ANIMATED:S.animated,TOO_LARGE:S.large}; showErr(map[res.errorCode]||S.corrupt); } } };
+    var h=function(e){ if(e.data.id===id){ w.removeEventListener('message',h); var res=e.data; if(res.ok){ drawWasm(res,size); } else { var map={NOT_JXL:S.notjxl,CORRUPT:S.corrupt,TOO_LARGE:S.large}; showErr(map[res.errorCode]||S.corrupt, res.errorCode); } } };
     w.addEventListener('message',h);
     w.postMessage({id:id, buffer:buf},[buf]);
-  }catch(e){ showErr(S.corrupt); }
+  }catch(e){ showErr(S.corrupt, 'CORRUPT'); }
 }
 try{
 var drop=$('drop'), inp=$('file');
