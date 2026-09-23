@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="zh" title="JPEG XL 浏览器支持检测 | Open JXL" description="检测当前浏览器是否原生支持 JPEG XL。" path="/zh/jxl-browser-support/">
+<section class="page-hero">
+<span class="eyebrow">实时检测</span>
+<h1>当前浏览器<span class="grad">支持 JPEG XL 吗</span></h1>
+<p class="lead">结果仅表示当前浏览器，在本地测试。</p>
+</section>
+
+<section class="card verdict">
+<div id="s" class="verdict-big">检测中</div>
+<p class="verdict-note">没有原生支持也没关系，查看器会改用本地解码。这不代表公共网页上的图片可以直接用 .jxl。</p>
+</section>
+
+<section class="sections" style="grid-template-columns:1fr 1fr">
+<div class="card mini-cta"><h3>有文件要看？</h3><p>几秒钟本地预览。</p><p><a class="btn primary" href="/zh/">去预览 .jxl -></a></p></div>
+<div class="card mini-cta"><h3>刚接触这个格式？</h3><p>先了解 .jxl 是什么。</p><p><a class="btn ghost" href="/zh/how-to-open-jxl-file/">查看打开方式 -></a></p></div>
+</section>
+<script is:inline src="/support-check.js" data-lang="zh"></script>
+</Base>

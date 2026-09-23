@@ -1,0 +1,12 @@
+{
+  "name": "Open JXL",
+  "short_name": "Open JXL",
+  "description": "Preview JPEG XL (.jxl) files locally in your browser. Nothing is uploaded.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f8fc",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base lang="en" title="JPEG XL browser support test | Open JXL" description="Test whether this browser supports JPEG XL natively." path="/jxl-browser-support/">
+<section class="page-hero">
+<span class="eyebrow">Live test</span>
+<h1>Does this browser <span class="grad">support JPEG XL?</span></h1>
+<p class="lead">Result reflects only this browser, tested locally on your device.</p>
+</section>
+
+<section class="card verdict">
+<div id="s" class="verdict-big">Checking…</div>
+<p class="verdict-note">No native support? No problem - the viewer below uses a local decoder instead. That does not mean public <code>&lt;img src=".jxl"&gt;</code> images work on the web.</p>
+</section>
+
+<section class="sections" style="grid-template-columns:1fr 1fr">
+<div class="card mini-cta"><h3>Have a file to look at?</h3><p>Preview it locally in seconds.</p><p><a class="btn primary" href="/">Preview a .jxl -></a></p></div>
+<div class="card mini-cta"><h3>New to this format?</h3><p>Learn what a .jxl file is.</p><p><a class="btn ghost" href="/how-to-open-jxl-file/">How to open -></a></p></div>
+</section>
+<script is:inline src="/support-check.js" data-lang="en"></script>
+</Base>

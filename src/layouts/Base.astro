@@ -1,0 +1,66 @@
+---
+import { SITE } from '../i18n';
+export interface Props { lang: 'en'|'zh'; title: string; description: string; path: string; h1?: string; noindex?: boolean; }
+const { lang, title, description, path, noindex } = Astro.props;
+const isZh = lang === 'zh';
+const enPath = isZh ? path.replace(/^\/zh\/?/, '/') || '/' : path;
+const zhPath = isZh ? path : (path === '/' ? '/zh/' : '/zh' + path);
+const canon = SITE + path;
+const enAbs = SITE + (enPath.startsWith('/') ? enPath : '/' + enPath);
+const zhAbs = SITE + zhPath;
+---
+<!DOCTYPE html>
+<html lang={isZh ? 'zh-Hans' : 'en'}>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>{title}</title>
+<link rel="stylesheet" href="/site.css" />
+<meta name="description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:image" content={SITE + '/og.png'} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Open JXL - preview JPEG XL files locally" />
+<link rel="canonical" href={canon} />
+<link rel="alternate" hreflang="en" href={enAbs} />
+<link rel="alternate" hreflang="zh-Hans" href={zhAbs} />
+<link rel="alternate" hreflang="x-default" href={enAbs} />
+<meta property="og:site_name" content="Open JXL" />
+<meta name="author" content="Open JXL" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f8fc" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a" />
+<link rel="manifest" href="/site.webmanifest" />
+{noindex ? <meta name="robots" content="noindex" /> : null}
+<meta property="og:url" content={canon} />
+<meta property="og:type" content="website" />
+<meta name="twitter:image" content={SITE + '/og.png'} />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Open JXL","url":"https://example.com/","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0"}}</script>
+<script defer data-domain="example.com" src="https://plausible.io/js/script.js"></script>
+<link rel="stylesheet" href="/site.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">{isZh?'跳到内容':'Skip to content'}</a>
+<header class="topbar"><div class="topbar-in">
+<a class="logo" href={isZh?'/zh/':'/'}><span class="logo-mark">JX</span>Open JXL</a>
+<nav class="topnav">
+<a href={isZh?'/zh/how-to-open-jxl-file/':'/how-to-open-jxl-file/'}>{isZh?'如何打开':'How to open'}</a>
+<a href={isZh?'/zh/jxl-browser-support/':'/jxl-browser-support/'}>{isZh?'浏览器支持':'Browser support'}</a>
+<a href={isZh?'/zh/privacy/':'/privacy/'}>{isZh?'隐私':'Privacy'}</a>
+<span class="lang-sw"><a href={enPath} class={isZh?'':'on'}>EN</a><a href={zhPath} class={isZh?'on':''}>中文</a></span>
+</nav>
+</div></header>
+<main id="main"><div id="lang-hint" hidden></div><slot /></main>
+<footer id="footer"><div class="foot-in">
+<div><strong>Open JXL</strong><small id="seo-foot"></small><small>Nothing is uploaded. / 文件不上传。</small></div>
+<div class="foot-links">
+<a href={isZh?'/zh/how-to-open-jxl-file/':'/how-to-open-jxl-file/'}>{isZh?'如何打开':'How to open'}</a>
+<a href={isZh?'/zh/jxl-browser-support/':'/jxl-browser-support/'}>{isZh?'浏览器支持':'Support'}</a>
+<a href={isZh?'/zh/privacy/':'/privacy/'}>{isZh?'隐私':'Privacy'}</a>
+</div>
+</div></footer>
+</body>
+</html>
