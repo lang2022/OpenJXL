@@ -25,14 +25,15 @@ import Base from '../../layouts/Base.astro';
 <div id="result" hidden>
 <div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> 预览并导出</div>
 <div class="result-grid">
-<div><div class="preview-frame"><img id="preview-img" hidden alt="jxl preview" /><canvas id="preview" hidden></canvas></div>
-<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">适应</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div></div>
+<div><h3 class="res-h">预览</h3><div class="preview-frame"><img id="preview-img" hidden alt="jxl preview" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar" role="group" aria-label="预览控制"><button id="z-in" class="btn ghost" type="button" aria-label="放大" title="放大">＋</button><button id="z-out" class="btn ghost" type="button" aria-label="缩小" title="缩小">－</button><button id="z-fit" class="btn ghost" type="button" aria-label="适应大小" title="适应大小">适应</button><button id="z-full" class="btn ghost" type="button" aria-label="全屏" title="全屏">⛶</button><button id="z-open" class="btn ghost" type="button" aria-label="在新标签页打开原图" title="新窗口打开原图">↗</button></div></div>
 <div>
-<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">仅本地处理</span></div>
-<div class="dl-row">
+<h3 class="res-h">文件信息</h3><div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">仅本地处理</span></div>
+<h3 class="res-h">导出</h3><div class="dl-row">
 <button id="dl-jpg" class="btn primary" disabled>下载 JPG</button>
 <button id="dl-png" class="btn ghost" disabled>下载 PNG</button>
 </div>
+<p class="export-note">导出说明：JPG 质量 0.92 · PNG 无损 · 动画仅第一帧 · 不保留 EXIF / GPS / ICC · 超大图受浏览器内存限制。</p>
 <button id="again">换一个文件 →</button>
 </div>
 </div>

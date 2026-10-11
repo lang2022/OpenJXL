@@ -1,9 +1,9 @@
 (function(){
 var lang = (document.currentScript && document.currentScript.dataset.lang) || 'en';
 var S = {
-en: { running:'Checking JPEG XL support…', native:'This browser can display JPEG XL natively.', wasm:'This browser cannot display JPEG XL natively. Local decoder enabled.', fail:'Could not load the local decoder. Try Chrome, Firefox, Safari, or Edge.', loading:'Decoding on this device…', notjxl:'This does not look like a JPEG XL file.', corrupt:'Could not decode this file. It may be damaged.', animated:'V1 does not support animated JPEG XL.', large:'This image is too large for this browser. Try a smaller file.', multi:'V1 opens one file at a time. Using the first file.', tagline:'Preview JPEG XL (.jxl) locally. Nothing is uploaded.', dropT:'Drop a .jxl file', dropS:'or tap to choose from your files', dropSDesktop:'or click to choose, paste also works', first:'First visit loads a local decoder (~0.9 MB), then works offline for this session.', jpg:'Download JPG', png:'Download PNG', paste:'Please paste a .jxl file, not a decoded image.', frame:'Note: animated images show the first frame only.', hint:'Prefer Chinese? View the Chinese version.', sample:'Try a sample file' },
-zh: { running:'正在检测浏览器是否支持 JPEG XL…', native:'当前浏览器可原生显示 JPEG XL。', wasm:'当前浏览器不能原生显示 JPEG XL。已启用本地解码。', fail:'本地解码组件加载失败。请改用 Chrome、Firefox、Safari 或 Edge。', loading:'正在本机解码…', notjxl:'这不像 JPEG XL 文件。', corrupt:'无法解码。文件可能已损坏。', animated:'V1 暂不支持动画 JPEG XL。', large:'图片太大，当前浏览器无法预览。请换更小的文件。', multi:'V1 每次仅打开一个文件，已使用第一份。', tagline:'本地预览 JPEG XL（.jxl）。文件不上传。', dropT:'拖入 .jxl 文件', dropS:'或点此从文件里选择', dropSDesktop:'或点击选择，也可粘贴', first:'首次访问会加载本地解码组件（约 0.9 MB），之后本会话可继续使用。', jpg:'下载 JPG', png:'下载 PNG', paste:'请粘贴 .jxl 文件，而不是已解码的图片', frame:'说明：动画图片仅显示第一帧。', hint:'Prefer English? View the English version.', sample:'试用示例文件' },
-es: { running:'Comprobando si tu navegador muestra JPEG XL…', native:'Este navegador muestra JPEG XL de forma nativa.', wasm:'Este navegador no muestra JPEG XL de forma nativa. Decodificador local activado.', fail:'No se pudo cargar el decodificador local. Prueba con Chrome, Firefox, Safari o Edge.', loading:'Decodificando en tu dispositivo…', notjxl:'Esto no parece un archivo JPEG XL (.jxl).', corrupt:'No se pudo decodificar. El archivo puede estar dañado.', animated:'La V1 no admite JPEG XL animado. Se muestra el primer fotograma.', large:'Imagen demasiado grande para este navegador. Prueba con una más pequeña (ideal < 30 MP).', multi:'La V1 abre un archivo a la vez. Usando el primero.', tagline:'Previsualiza JPEG XL (.jxl) en tu dispositivo. Nada se sube.', dropT:'Suelta tu .jxl aquí', dropS:'o toca para elegirlo desde tus archivos', dropSDesktop:'o haz clic para elegir, también puedes pegar (Ctrl+V)', first:'La primera visita carga el decodificador local (~0.9 MB); después funciona sin conexión en esta sesión.', jpg:'Descargar JPG', png:'Descargar PNG', paste:'Pega un archivo .jxl, no una imagen ya decodificada.', frame:'Nota: en animados solo se muestra el primer fotograma.', hint:'¿Prefieres español? Ver la versión en español.', sample:'Probar con un ejemplo' }
+en: { running:'Checking JPEG XL support…', native:'This browser can display JPEG XL natively.', wasm:'This browser cannot display JPEG XL natively. Local decoder enabled.', fail:'Could not load the local decoder. Try Chrome, Firefox, Safari, or Edge.', loading:'Decoding on this device…', notjxl:'This does not look like a JPEG XL file.', corrupt:'Could not decode this file. It may be damaged.', animated:'V1 does not support animated JPEG XL.', large:'This image is too large for this browser. Try a smaller file.', multi:'V1 opens one file at a time. Using the first file.', tagline:'Preview JPEG XL (.jxl) locally. Nothing is uploaded.', dropT:'Drop a .jxl file', dropS:'or tap to choose from your files', dropSDesktop:'or click to choose, paste also works', first:'First visit loads a local decoder (~0.9 MB), then works offline for this session.', jpg:'Download JPG', png:'Download PNG', paste:'Please paste a .jxl file, not a decoded image.', frame:'Note: animated images show the first frame only.', hint:'Prefer Chinese? View the Chinese version.', sample:'Try a sample file', batchT:'Batch convert', batchD:'Convert several .jxl files in a row. Files download one by one.', batchPick:'Choose files', batchGoJ:'Convert all to JPG', batchGoP:'Convert all to PNG', batchWait:'Waiting', batchRun:'Working…', batchOk:'Done', batchFail:'Failed' },
+zh: { running:'正在检测浏览器是否支持 JPEG XL…', native:'当前浏览器可原生显示 JPEG XL。', wasm:'当前浏览器不能原生显示 JPEG XL。已启用本地解码。', fail:'本地解码组件加载失败。请改用 Chrome、Firefox、Safari 或 Edge。', loading:'正在本机解码…', notjxl:'这不像 JPEG XL 文件。', corrupt:'无法解码。文件可能已损坏。', animated:'V1 暂不支持动画 JPEG XL。', large:'图片太大，当前浏览器无法预览。请换更小的文件。', multi:'V1 每次仅打开一个文件，已使用第一份。', tagline:'本地预览 JPEG XL（.jxl）。文件不上传。', dropT:'拖入 .jxl 文件', dropS:'或点此从文件里选择', dropSDesktop:'或点击选择，也可粘贴', first:'首次访问会加载本地解码组件（约 0.9 MB），之后本会话可继续使用。', jpg:'下载 JPG', png:'下载 PNG', paste:'请粘贴 .jxl 文件，而不是已解码的图片', frame:'说明：动画图片仅显示第一帧。', hint:'Prefer English? View the English version.', sample:'试用示例文件', batchT:'批量转换', batchD:'逐个转换多个 .jxl 文件，文件会逐个下载。', batchPick:'选择多个文件', batchGoJ:'全部转 JPG', batchGoP:'全部转 PNG', batchWait:'等待', batchRun:'处理中…', batchOk:'完成', batchFail:'失败' },
+es: { running:'Comprobando si tu navegador muestra JPEG XL…', native:'Este navegador muestra JPEG XL de forma nativa.', wasm:'Este navegador no muestra JPEG XL de forma nativa. Decodificador local activado.', fail:'No se pudo cargar el decodificador local. Prueba con Chrome, Firefox, Safari o Edge.', loading:'Decodificando en tu dispositivo…', notjxl:'Esto no parece un archivo JPEG XL (.jxl).', corrupt:'No se pudo decodificar. El archivo puede estar dañado.', animated:'La V1 no admite JPEG XL animado. Se muestra el primer fotograma.', large:'Imagen demasiado grande para este navegador. Prueba con una más pequeña (ideal < 30 MP).', multi:'La V1 abre un archivo a la vez. Usando el primero.', tagline:'Previsualiza JPEG XL (.jxl) en tu dispositivo. Nada se sube.', dropT:'Suelta tu .jxl aquí', dropS:'o toca para elegirlo desde tus archivos', dropSDesktop:'o haz clic para elegir, también puedes pegar (Ctrl+V)', first:'La primera visita carga el decodificador local (~0.9 MB); después funciona sin conexión en esta sesión.', jpg:'Descargar JPG', png:'Descargar PNG', paste:'Pega un archivo .jxl, no una imagen ya decodificada.', frame:'Nota: en animados solo se muestra el primer fotograma.', hint:'¿Prefieres español? Ver la versión en español.', sample:'Probar con un ejemplo', batchT:'Conversión por lotes', batchD:'Convierte varios .jxl seguidos. Se descargan uno por uno.', batchPick:'Elegir archivos', batchGoJ:'Todo a JPG', batchGoP:'Todo a PNG', batchWait:'En espera', batchRun:'Procesando…', batchOk:'Listo', batchFail:'Falló' }
 }[lang] || {};
 function $(id){ return document.getElementById(id); }
 function setT(id, v){ var e=$(id); if(e) e.textContent=v; return e; }
@@ -164,6 +164,82 @@ $('again').onclick=function(){ var r=$('result'),e=$('err'); if(r) r.hidden=true
     b.style.cssText='margin:14px auto 0'; b.textContent=S.sample||'Try a sample';
     b.onclick=function(ev){ ev.stopPropagation(); fetch('/fixtures/tiny.jxl').then(function(r){ if(!r.ok) throw 0; return r.blob(); }).then(function(bl){ handleFile(new File([bl],'sample.jxl',{type:'image/jxl'})); }).catch(function(){ showErr(S.corrupt,'CORRUPT'); }); };
     dropEl.insertAdjacentElement('afterend', b);
+  }catch(e){}
+})();
+(function batch(){
+  try{
+    var card=document.querySelector('.tool-card'); if(!card||$('batch')) return;
+    var sec=document.createElement('section'); sec.className='card'; sec.id='batch'; sec.style.marginTop='16px';
+    var h=document.createElement('h3'); h.textContent=S.batchT||'Batch'; sec.appendChild(h);
+    var d=document.createElement('p'); d.style.cssText='color:var(--muted);font-size:14px;margin:6px 0 0'; d.textContent=S.batchD||''; sec.appendChild(d);
+    var row=document.createElement('div'); row.className='batch-row';
+    var pick=document.createElement('button'); pick.className='btn ghost'; pick.type='button'; pick.textContent=S.batchPick||'Choose';
+    var goJ=document.createElement('button'); goJ.className='btn primary'; goJ.type='button'; goJ.textContent=S.batchGoJ||'JPG'; goJ.disabled=true;
+    var goP=document.createElement('button'); goP.className='btn ghost'; goP.type='button'; goP.textContent=S.batchGoP||'PNG'; goP.disabled=true;
+    row.appendChild(pick); row.appendChild(goJ); row.appendChild(goP); sec.appendChild(row);
+    var bar=document.createElement('div'); bar.className='batch-bar'; bar.hidden=true; var fill=document.createElement('i'); bar.appendChild(fill); sec.appendChild(bar);
+    var ul=document.createElement('ul'); ul.className='batch-list'; sec.appendChild(ul);
+    var inp=document.createElement('input'); inp.type='file'; inp.accept='.jxl,image/jxl'; inp.multiple=true; inp.hidden=true; sec.appendChild(inp);
+    card.insertAdjacentElement('afterend', sec);
+    var queue=[];
+    function blobOf(c,type,q){ return new Promise(function(res,rej){ try{ c.toBlob(function(b){ b?res(b):rej('TOO_LARGE'); },type,q); }catch(e){ rej('TOO_LARGE'); } }); }
+    function decBuf(buf){
+      return new Promise(function(res,rej){
+        if(mode==='native'){
+          var url=URL.createObjectURL(new Blob([buf],{type:'image/jxl'})); var img=new Image();
+          img.onload=function(){ try{ var c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight; c.getContext('2d').drawImage(img,0,0); URL.revokeObjectURL(url); res(c); }catch(e){ URL.revokeObjectURL(url); rej('TOO_LARGE'); } };
+          img.onerror=function(){ URL.revokeObjectURL(url); rej('CORRUPT'); };
+          img.src=url; return;
+        }
+        try{
+          ensureWorker(); var w=worker; if(!w) return rej('FAIL');
+          var id=Date.now()+Math.random();
+          var h2=function(e){ if(e.data.id===id){ w.removeEventListener('message',h2); var r=e.data; if(r.ok){ try{ var c=document.createElement('canvas'); c.width=r.width; c.height=r.height; c.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(r.data),r.width,r.height),0,0); res(c); }catch(e){ rej('TOO_LARGE'); } } else rej(r.errorCode||'CORRUPT'); } };
+          w.addEventListener('message',h2);
+          w.postMessage({id:id,buffer:buf},[buf]);
+        }catch(e){ rej('CORRUPT'); }
+      });
+    }
+    pick.onclick=function(){ inp.click(); };
+    inp.onchange=function(){
+      var fs=Array.prototype.slice.call(inp.files||[]); inp.value='';
+      fs.forEach(function(f){
+        var li=document.createElement('li');
+        var nm=document.createElement('span'); nm.textContent=f.name; li.appendChild(nm);
+        var st=document.createElement('span'); st.className='st'; st.textContent=S.batchWait||''; li.appendChild(st);
+        ul.appendChild(li);
+        queue.push({f:f,st:st});
+      });
+      if(queue.length){ goJ.disabled=false; goP.disabled=false; }
+    };
+    function runAll(type,q,ext){
+      goJ.disabled=true; goP.disabled=true; pick.disabled=true;
+      bar.hidden=false; var done=0, okN=0;
+      track('batch_start');
+      (function next(i){
+        if(i>=queue.length){
+          pick.disabled=false; if(queue.length){ goJ.disabled=false; goP.disabled=false; }
+          track('batch_done'); return;
+        }
+        var item=queue[i]; item.st.textContent=S.batchRun||'…'; item.st.className='st run';
+        item.f.arrayBuffer().then(function(buf){
+          if(!looksJXL(buf)) throw 'NOT_JXL';
+          return decBuf(buf);
+        }).then(function(c){ return blobOf(c,type,q); }).then(function(b){
+          track(ext==='jpg'?'export_jpg':'export_png');
+          dl(URL.createObjectURL(b), safeBase(item.f.name)+'.'+ext);
+          item.st.textContent=S.batchOk||'OK'; item.st.className='st ok'; okN++;
+        }).catch(function(code){
+          try{ if(window.plausible) window.plausible('preview_fail',{props:{error_code:'BATCH_'+(code||'UNKNOWN')}}); }catch(x){}
+          item.st.textContent=(S.batchFail||'Failed'); item.st.className='st err';
+        }).then(function(){
+          done++; fill.style.width=Math.round(done/queue.length*100)+'%';
+          next(i+1);
+        });
+      })(0);
+    }
+    goJ.onclick=function(){ runAll('image/jpeg',0.92,'jpg'); };
+    goP.onclick=function(){ runAll('image/png',undefined,'png'); };
   }catch(e){}
 })();
 }catch(e){}

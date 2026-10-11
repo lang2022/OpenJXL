@@ -23,14 +23,15 @@ import Base from '../../layouts/Base.astro';
 <div id="result" hidden>
 <div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Vista previa y descargar PNG</div>
 <div class="result-grid">
-<div><div class="preview-frame"><img id="preview-img" hidden alt="vista jxl" /><canvas id="preview" hidden></canvas></div>
-<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Ajustar</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div></div>
+<div><h3 class="res-h">Vista previa</h3><div class="preview-frame"><img id="preview-img" hidden alt="vista jxl" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar" role="group" aria-label="Controles de vista"><button id="z-in" class="btn ghost" type="button" aria-label="Acercar" title="Acercar">＋</button><button id="z-out" class="btn ghost" type="button" aria-label="Alejar" title="Alejar">－</button><button id="z-fit" class="btn ghost" type="button" aria-label="Ajustar tamaño" title="Ajustar tamaño">Ajustar</button><button id="z-full" class="btn ghost" type="button" aria-label="Pantalla completa" title="Pantalla completa">⛶</button><button id="z-open" class="btn ghost" type="button" aria-label="Abrir original en pestaña nueva" title="Abrir original">↗</button></div></div>
 <div>
-<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Solo local</span></div>
-<div class="dl-row">
+<h3 class="res-h">Archivo</h3><div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Solo local</span></div>
+<h3 class="res-h">Exportar</h3><div class="dl-row">
 <button id="dl-png" class="btn primary" disabled>Descargar PNG</button>
 <button id="dl-jpg" class="btn ghost" disabled>Descargar JPG</button>
 </div>
+<p class="export-note">Exportación: JPG calidad 0.92 · PNG sin pérdida · animados solo primer fotograma · no se conservan EXIF / GPS / ICC · imágenes muy grandes limitadas por la memoria.</p>
 <button id="again">Convertir otro →</button>
 </div>
 </div>

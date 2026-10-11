@@ -23,14 +23,15 @@ import Base from '../layouts/Base.astro';
 <div id="result" hidden>
 <div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Preview &amp; download PNG</div>
 <div class="result-grid">
-<div><div class="preview-frame"><img id="preview-img" hidden alt="jxl preview" /><canvas id="preview" hidden></canvas></div>
-<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Fit</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div></div>
+<div><h3 class="res-h">Preview</h3><div class="preview-frame"><img id="preview-img" hidden alt="jxl preview" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar" role="group" aria-label="Preview controls"><button id="z-in" class="btn ghost" type="button" aria-label="Zoom in" title="Zoom in">＋</button><button id="z-out" class="btn ghost" type="button" aria-label="Zoom out" title="Zoom out">－</button><button id="z-fit" class="btn ghost" type="button" aria-label="Reset zoom" title="Reset zoom">Fit</button><button id="z-full" class="btn ghost" type="button" aria-label="Fullscreen" title="Fullscreen">⛶</button><button id="z-open" class="btn ghost" type="button" aria-label="Open full image in new tab" title="Open full image">↗</button></div></div>
 <div>
-<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Local only</span></div>
-<div class="dl-row">
+<h3 class="res-h">File info</h3><div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Local only</span></div>
+<h3 class="res-h">Export</h3><div class="dl-row">
 <button id="dl-png" class="btn primary" disabled>Download PNG</button>
 <button id="dl-jpg" class="btn ghost" disabled>Download JPG</button>
 </div>
+<p class="export-note">Exports: JPG quality 0.92 · PNG lossless · animated shows first frame only · EXIF / GPS / ICC not preserved · very large images may exceed browser memory.</p>
 <button id="again">Convert another file -></button>
 </div>
 </div>
