@@ -25,6 +25,7 @@ import Base from '../../layouts/Base.astro';
 <div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Vista previa y exportar</div>
 <div class="result-grid">
 <div class="preview-frame"><img id="preview-img" hidden alt="vista jxl" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Ajustar</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
 <div>
 <div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Solo local</span></div>
 <div class="dl-row">
@@ -39,6 +40,22 @@ import Base from '../../layouts/Base.astro';
 <section class="card intro">
 <h2>¿Qué es JPEG XL (.jxl)?</h2>
 <p>JPEG XL es un formato moderno, más pequeño y mejor que JPEG. Si buscas cómo abrir un archivo JXL o un visor de imágenes JPEG XL sin instalar nada ni ver anuncios, suéltalo arriba.</p>
+</section>
+<section class="sections">
+<div class="card"><div class="svg-ico">🔒</div><h3>Privado por diseño</h3><p>Todo se decodifica en tu dispositivo. Al cerrar la pestaña, nada queda.</p></div>
+<div class="card"><div class="svg-ico">⚡</div><h3>Sin instalar nada</h3><p>Funciona en el navegador. Si no hay soporte nativo, se activa el decodificador local.</p></div>
+<div class="card"><div class="svg-ico">🖼️</div><h3>Comparte donde quieras</h3><p>Exporta a JPG o PNG con un clic, listo para chats y redes.</p></div>
+</section>
+<section class="card intro">
+<h2>¿Qué es JPEG XL (.jxl)?</h2>
+<p>JPEG XL es un formato moderno: archivos más pequeños y mejor calidad que JPEG. Si recibiste un <strong>.jxl</strong> y no sabes cómo abrirlo, suéltalo arriba para verlo al instante y guarda una copia JPG o PNG para apps que aún no lo aceptan.</p>
+<p><a href="/es/how-to-open-jxl-file/">Cómo abrir →</a> · <a href="/es/jxl-browser-support/">Probar este navegador →</a> · <a href="/es/privacy/">Privacidad: nada se sube →</a></p>
+</section>
+<section class="faq">
+<details open><summary>¿Qué es un .jxl?</summary><p>Una imagen fija en formato JPEG XL: eficiente, pero no todas las apps lo abren.</p></details>
+<details><summary>¿Es seguro soltar mi archivo aquí?</summary><p>Sí. Todo ocurre en tu navegador; al cerrar la pestaña se descarta.</p></details>
+<details><summary>¿Qué hago si falla?</summary><p>Si el archivo está dañado, es animado o es demasiado grande (&gt;30 MP), verás un aviso. Prueba con otro archivo o con la <a href="/es/how-to-open-jxl-file/">guía paso a paso</a>.</p></details>
+<details><summary>¿Es gratis?</summary><p>Sí: ver y exportar JPG/PNG es gratis, sin cuenta ni marca de agua.</p></details>
 </section>
 <script is:inline src="/viewer.js" data-lang="es"></script>
 </Base>

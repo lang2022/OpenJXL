@@ -26,6 +26,7 @@ import Base from '../layouts/Base.astro';
 <div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Preview &amp; export</div>
 <div class="result-grid">
 <div class="preview-frame"><img id="preview-img" hidden alt="jxl preview" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Fit</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
 <div>
 <div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Local only</span></div>
 <div class="dl-row">
@@ -46,7 +47,7 @@ import Base from '../layouts/Base.astro';
 
 <section class="card intro">
 <h2>What is JPEG XL (.jxl)?</h2>
-<p>JPEG XL is a modern image format designed to replace aging JPEG with smaller files and higher quality. If you received a <strong>.jxl</strong> file and wonder how to open a JXL file, you are in the right place: drop it into the viewer above to preview it instantly on your device, then save a JPG or PNG copy for apps that do not speak JPEG XL yet.</p>
+<p>JPEG XL is a modern image format: smaller files, higher quality than JPEG. Got a <strong>.jxl</strong> you can't open? Drop it above to preview it instantly, then save a JPG or PNG for apps that don't speak JPEG XL yet.</p>
 </section>
 
 <section class="faq">

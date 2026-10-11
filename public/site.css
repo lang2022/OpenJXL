@@ -56,6 +56,10 @@ main{max-width:1080px;margin:0 auto;padding:0 20px 64px}
 @media(max-width:760px){.result-grid{grid-template-columns:1fr}}
 .preview-frame{background:#0f172a;border-radius:var(--radius);min-height:280px;display:grid;place-items:center;overflow:hidden;position:relative}
 .preview-frame img,.preview-frame canvas{max-width:100%;max-height:520px;width:auto;height:auto;display:block}
+#drop.touch{border-style:solid;background:#eef2ff}
+#drop.touch #drop-title{font-size:22px}
+.zoom-bar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+.zoom-bar .btn{padding:8px 12px;font-size:13px;min-height:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .chip{font-size:13px;font-weight:600;background:#f1f5f9;border:1px solid var(--line);border-radius:999px;padding:6px 13px;color:#334155}
 .chip.hot{background:#eef2ff;border-color:#c7d2fe;color:var(--brand)}

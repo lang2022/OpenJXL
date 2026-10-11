@@ -35,6 +35,20 @@ var foot = document.getElementById('seo-foot'); if(foot) foot.textContent = lang
     } else {
       if(S.dropSDesktop) setT('drop-sub', S.dropSDesktop);
     }
+    if(touch){ var dropEl=$('drop'); if(dropEl) dropEl.classList.add('touch'); var t=$('drop-title'); if(t) t.textContent = lang==='zh' ? '点此选择 JXL 文件' : lang==='es' ? 'Toca para elegir tu .jxl' : 'Tap to choose your JXL file'; }
+  }catch(e){}
+})();
+(function zoomCtl(){
+  try{
+    var frame=document.querySelector('.preview-frame'); if(!frame) return;
+    var bar=document.getElementById('zoom-bar'); if(!bar) return;
+    var z=1; function apply(){ var img=$('preview-img'), c=$('preview'); [img,c].forEach(function(el){ if(!el) return; el.style.transform='scale('+z+')'; el.style.transformOrigin='center'; }); frame.style.overflow='auto'; }
+    function btn(id,fn){ var b=document.getElementById(id); if(b) b.onclick=fn; }
+    btn('z-in',function(){ z=Math.min(4,z+0.25); apply(); });
+    btn('z-out',function(){ z=Math.max(0.25,z-0.25); apply(); });
+    btn('z-fit',function(){ z=1; apply(); });
+    btn('z-full',function(){ if(frame.requestFullscreen) frame.requestFullscreen(); });
+    btn('z-open',function(){ var img=$('preview-img'), c=$('preview'); var url = (img && !img.hidden && img.src) ? img.src : (c ? c.toDataURL('image/png') : null); if(url) window.open(url,'_blank'); });
   }catch(e){}
 })();
 var mode = 'unknown', worker = null, lastName = 'image', startT = 0, timer = null;
@@ -52,10 +66,18 @@ function detectNative(){
     setTimeout(function(){ fin(false); }, 1500); img.src = url;
   }).catch(toWasm);
   setTimeout(function(){ if(mode==='unknown'){ toWasm(); } }, 2500);
+  setTimeout(function(){
+    if(mode==='unknown'){
+      setStatus(S.fail);
+      showErr((S.fail||'Decoder failed.') + ' ', 'LOAD_FAIL');
+      var e=$('err'); if(e){ var b=document.createElement('button'); b.className='btn ghost'; b.style.cssText='margin-top:10px'; b.textContent = lang==='zh' ? '重新检测' : lang==='es' ? 'Reintentar' : 'Retry'; b.onclick=function(){ location.reload(); }; e.appendChild(document.createElement('br')); e.appendChild(b); }
+    }
+  }, 8000);
   function toWasm(){ if(mode!=='unknown') return; mode='wasm'; setStatus(S.wasm); track('detect_wasm'); ensureWorker(); }
 }
 function ensureWorker(){ if(worker) return worker; try{ worker = new Worker('/jxl-worker.js', {type:'module'}); }catch(e){ setStatus(S.fail); track('detect_fail'); } return worker; }
 function showErr(msg, code){ try{ clearInterval(timer); var l=$('loading'); if(l) l.hidden=true; var e=$('err'); if(!e) return; e.hidden=false; e.textContent=msg; }catch(x){} try{ if(window.plausible) window.plausible('preview_fail', {props:{error_code: code || 'UNKNOWN'}}); }catch(x){} }
+function safeBase(name){ var n = (name||'image').replace(/\.jxl$/i,''); n = n.replace(/\.[a-z0-9]{1,5}$/i,''); n = n.replace(/[\\/:*?"<>|]+/g,'-').trim() || 'image'; return n.slice(0,80); }
 function fmt(n){ return n>1048576 ? (n/1048576).toFixed(1)+' MB' : Math.round(n/1024)+' KB'; }
 function dl(u,n){ var a=document.createElement('a'); a.href=u; a.download=n; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(u); },5000); }
 function exportFromNativeImg(type, quality, filename){
@@ -102,7 +124,7 @@ function handleFile(f){
   if(!f) return;
   f.arrayBuffer().then(function(buf){
     if(!looksJXL(buf)){ showErr(S.notjxl, 'NOT_JXL'); return; }
-    lastName = f.name.replace(/\.jxl$/i,'') || 'image';
+    lastName = safeBase(f.name);
     startT = performance.now(); $('err').hidden=true; $('result').hidden=true; $('loading').hidden=false;
     var t0=Date.now(); clearInterval(timer); timer=setInterval(function(){ $('secs').textContent=((Date.now()-t0)/1000).toFixed(0); },250);
     if(mode==='native'){
