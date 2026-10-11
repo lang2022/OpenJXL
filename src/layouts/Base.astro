@@ -20,6 +20,9 @@ const supHref = isZh ? zhPath.replace(/\/$/, '') + '/jxl-browser-support/' : isE
 const priHref = isZh ? zhPath.replace(/\/$/, '') + '/privacy/' : isEs ? esPath.replace(/\/$/, '') + '/privacy/' : '/privacy/';
 const homeHref = isZh ? '/zh/' : isEs ? '/es/' : '/';
 const langLabel = isZh ? '中文' : isEs ? 'ES' : 'EN';
+const ogLocale = isZh ? 'zh_CN' : isEs ? 'es_ES' : 'en_US';
+const ogAlt = isZh ? 'Open JXL - 在本机预览 JPEG XL 文件' : isEs ? 'Open JXL - previsualiza archivos JPEG XL localmente' : 'Open JXL - preview JPEG XL files locally';
+const skipLink = isZh ? '跳到内容' : isEs ? 'Saltar al contenido' : 'Skip to content';
 ---
 <!DOCTYPE html>
 <html lang={isZh ? 'zh-Hans' : isEs ? 'es' : 'en'}>
@@ -35,7 +38,9 @@ const langLabel = isZh ? '中文' : isEs ? 'ES' : 'EN';
 <meta property="og:image" content={SITE + '/og.png'} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Open JXL - preview JPEG XL files locally" />
+<meta property="og:locale" content={ogLocale} />
+{isZh ? <meta property="og:locale:alternate" content="en_US" /> : null}
+<meta property="og:image:alt" content={ogAlt} />
 <link rel="canonical" href={canon} />
 <link rel="alternate" hreflang="en" href={enAbs} />
 <link rel="alternate" hreflang="zh-Hans" href={zhAbs} />
@@ -50,12 +55,15 @@ const langLabel = isZh ? '中文' : isEs ? 'ES' : 'EN';
 {noindex ? <meta name="robots" content="noindex" /> : null}
 <meta property="og:url" content={canon} />
 <meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={SITE + '/og.png'} />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Open JXL","url":"https://openjxlfile.com/","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0"}}</script>
 <script defer data-domain="openjxlfile.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">{isZh?'跳到内容':'Skip to content'}</a>
+<a class="skip-link" href="#main">{skipLink}</a>
 <header class="topbar"><div class="topbar-in">
 <a class="logo" href={homeHref} aria-label="Open JXL home"><span class="logo-mark" aria-hidden="true">JX</span><span class="logo-text">Open JXL</span></a>
 <nav class="topnav">

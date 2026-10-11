@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="es" title="Convertir JXL a JPG online, gratis y sin subir nada | Open JXL" description="Convierte JXL a JPG en tu navegador. Suelta tu .jxl, previsualízalo y descarga el JPG. Gratis, sin cuenta, nada se sube." path="/es/jxl-a-jpg/">
+<section class="page-hero">
+<span class="eyebrow">JXL → JPG · 100% local</span>
+<h1>Convertir <span class="grad">JXL a JPG</span> online</h1>
+<p class="lead">¿Alguna app no acepta tu <strong>.jxl</strong>? Suelta tu archivo JPEG XL aquí, míralo en tu dispositivo y <strong>descarga el JPG</strong>. Nada se sube.</p>
+</section>
+
+<section class="tool-card" aria-label="Convertidor JXL a JPG">
+<div class="tool-head"><span class="step-n">1</span> Suelta tu .jxl <span style="color:var(--muted);font-weight:500">— se decodifica en tu dispositivo</span></div>
+<div id="drop" tabindex="0" role="button" aria-label="Elegir archivo .jxl">
+<div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+<div id="drop-title">Suelta tu .jxl aquí</div>
+<div id="drop-sub">o toca para elegirlo desde tus archivos</div>
+<div class="drop-kbd"><span class="kbd">.jxl → .jpg</span><span class="kbd">arrastrar</span><span class="kbd">Ctrl + V</span></div>
+<input id="file" type="file" accept=".jxl,image/jxl" hidden />
+</div>
+<p id="wasm-note"></p>
+<div id="err" hidden></div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">Decodificando en tu dispositivo…</span> <span id="secs">0</span>s</div>
+<div id="result" hidden>
+<div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Vista previa y descargar JPG</div>
+<div class="result-grid">
+<div class="preview-frame"><img id="preview-img" hidden alt="vista jxl" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Ajustar</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
+<div>
+<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Solo local</span></div>
+<div class="dl-row">
+<button id="dl-jpg" class="btn primary" disabled>Descargar JPG</button>
+<button id="dl-png" class="btn ghost" disabled>Descargar PNG</button>
+</div>
+<button id="again">Convertir otro →</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sections">
+<div class="card"><div class="svg-ico">🔒</div><h3>Conversión privada</h3><p>Todo pasa en tu navegador. Al cerrar la pestaña, nada queda.</p></div>
+<div class="card"><div class="svg-ico">⚡</div><h3>Gratis y sin marca</h3><p>Convierte de uno en uno, las veces que quieras, sin crear cuenta.</p></div>
+<div class="card"><div class="svg-ico">🖼️</div><h3>Buena calidad</h3><p>El JPG sale en alta calidad (0.92); para capturas o texto usa PNG sin pérdida.</p></div>
+</section>
+
+<section class="faq">
+<details open><summary>¿Pierde calidad al pasar de JXL a JPG?</summary><p>Un poco: JPG tiene pérdida. Con calidad 0.92 en fotos casi no se nota. Guarda tu .jxl original si te importa.</p></details>
+<details><summary>¿Dónde queda mi archivo?</summary><p>En tu carpeta de descargas, con el mismo nombre (photo.jxl pasa a ser photo.jpg).</p></details>
+<details><summary>¿Puedo pasarlo a PNG?</summary><p>Sí, con el botón Descargar PNG, mejor para capturas y gráficos.</p></details>
+<details><summary>¿Solo quieres verlo?</summary><p>Usa el <a href="/es/">visor JXL gratis →</a> o lee <a href="/es/how-to-open-jxl-file/">cómo abrir JXL →</a></p></details>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Pierde calidad al pasar de JXL a JPG?","acceptedAnswer":{"@type":"Answer","text":"Un poco. El JPG sale en calidad 0.92, casi indistinguible en fotos."}},{"@type":"Question","name":"¿Dónde queda mi archivo?","acceptedAnswer":{"@type":"Answer","text":"En tu carpeta de descargas, con el mismo nombre. Nada se sube."}}]}</script>
+<script is:inline src="/viewer.js" data-lang="es"></script>
+</Base>

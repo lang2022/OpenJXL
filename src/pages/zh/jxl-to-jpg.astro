@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="zh" title="JXL 转 JPG｜本地免费转换 JPEG XL，无需上传 | Open JXL" description="JXL 转 JPG 免费工具：在浏览器里打开 .jxl 文件，预览后下载 JPG。文件不上传，无需注册。" path="/zh/jxl-to-jpg/">
+<section class="page-hero">
+<span class="eyebrow">JXL → JPG · 本地转换</span>
+<h1><span class="grad">JXL 转 JPG</span>，免费在线转</h1>
+<p class="lead">某个 App 不认 <strong>.jxl</strong>？把 JPEG XL 文件拖进来，在本机预览，然后<strong>下载 JPG</strong>。文件不上传。</p>
+</section>
+
+<section class="tool-card" aria-label="JXL 转 JPG 工具">
+<div class="tool-head"><span class="step-n">1</span> 拖入 .jxl 文件 <span style="color:var(--muted);font-weight:500">— 在本机解码</span></div>
+<div id="drop" tabindex="0" role="button" aria-label="选择 .jxl 文件">
+<div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+<div id="drop-title">拖入 .jxl 文件</div>
+<div id="drop-sub">或点击选择，也可粘贴</div>
+<div class="drop-kbd"><span class="kbd">.jxl → .jpg</span><span class="kbd">拖放</span><span class="kbd">Ctrl + V</span></div>
+<input id="file" type="file" accept=".jxl,image/jxl" hidden />
+</div>
+<p id="wasm-note"></p>
+<div id="err" hidden></div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">正在本机解码…</span> <span id="secs">0</span>s</div>
+<div id="result" hidden>
+<div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> 预览并下载 JPG</div>
+<div class="result-grid">
+<div class="preview-frame"><img id="preview-img" hidden alt="jxl 预览" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">适应</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
+<div>
+<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">仅本地</span></div>
+<div class="dl-row">
+<button id="dl-jpg" class="btn primary" disabled>下载 JPG</button>
+<button id="dl-png" class="btn ghost" disabled>下载 PNG</button>
+</div>
+<button id="again">再转一个 -></button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sections">
+<div class="card"><div class="svg-ico">🔒</div><h3>本地转换</h3><p>解码和转 JPG 都在浏览器内存里完成，关闭页面即销毁，服务器看不到你的图。</p></div>
+<div class="card"><div class="svg-ico">⚡</div><h3>免费无水印</h3><p>免费 JXL 转换器，无需注册，一次转一张，可反复使用。</p></div>
+<div class="card"><div class="svg-ico">🖼️</div><h3>画质有保障</h3><p>JPG 以高质量（0.92）导出；截图、图表建议选 PNG 无损导出。</p></div>
+</section>
+
+<section class="faq">
+<details open><summary>JXL 转 JPG 会损失画质吗？</summary><p>轻微。JPG 是有损格式，0.92 质量下照片几乎看不出差别。重要原图请保留 .jxl。</p></details>
+<details><summary>转好的文件在哪里？</summary><p>在浏览器下载目录，沿用原名（photo.jxl 会变成 photo.jpg）。</p></details>
+<details><summary>能转 PNG 吗？</summary><p>可以，点“下载 PNG”，适合截图和文字图，无损。</p></details>
+<details><summary>只想看图不想转？</summary><p>用<a href="/zh/">免费 JXL 查看器 →</a>，或看<a href="/zh/how-to-open-jxl-file/">JXL 文件怎么打开 →</a></p></details>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"JXL 转 JPG 会损失画质吗？","acceptedAnswer":{"@type":"Answer","text":"轻微损失。JPG 以 0.92 高质量导出，照片几乎看不出差别。"}},{"@type":"Question","name":"转好的文件在哪里？","acceptedAnswer":{"@type":"Answer","text":"在浏览器下载目录，沿用原名。文件不上传。"}}]}</script>
+<script is:inline src="/viewer.js" data-lang="zh"></script>
+</Base>

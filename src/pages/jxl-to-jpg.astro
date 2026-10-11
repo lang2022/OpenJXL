@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base lang="en" title="JXL to JPG converter — convert JPEG XL online, 100% local | Open JXL" description="Convert JXL to JPG in your browser. Drop a .jxl file, preview it, download JPG. Nothing uploaded, free, no sign-up." path="/jxl-to-jpg/">
+<section class="page-hero">
+<span class="eyebrow">JXL → JPG · 100% local</span>
+<h1>Convert <span class="grad">JXL to JPG</span> online</h1>
+<p class="lead">Need a <strong>JPG</strong> because some app won't take <strong>.jxl</strong>? Drop your JPEG XL file below — preview it on this device, then <strong>download JPG</strong>. Nothing is uploaded.</p>
+</section>
+
+<section class="tool-card" aria-label="JXL to JPG converter">
+<div class="tool-head"><span class="step-n">1</span> Drop your .jxl file <span style="color:var(--muted);font-weight:500">— decoded on this device</span></div>
+<div id="drop" tabindex="0" role="button" aria-label="Choose a .jxl file">
+<div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+<div id="drop-title">Drop a .jxl file</div>
+<div id="drop-sub">or click to choose, paste also works</div>
+<div class="drop-kbd"><span class="kbd">.jxl → .jpg</span><span class="kbd">drag &amp; drop</span><span class="kbd">Ctrl + V</span></div>
+<input id="file" type="file" accept=".jxl,image/jxl" hidden />
+</div>
+<p id="wasm-note"></p>
+<div id="err" hidden></div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">Decoding on this device...</span> <span id="secs">0</span>s</div>
+<div id="result" hidden>
+<div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Preview &amp; download JPG</div>
+<div class="result-grid">
+<div class="preview-frame"><img id="preview-img" hidden alt="jxl preview" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Fit</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
+<div>
+<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Local only</span></div>
+<div class="dl-row">
+<button id="dl-jpg" class="btn primary" disabled>Download JPG</button>
+<button id="dl-png" class="btn ghost" disabled>Download PNG</button>
+</div>
+<button id="again">Convert another file -></button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sections">
+<div class="card"><div class="svg-ico">🔒</div><h3>Private conversion</h3><p>Decoding and JPG encoding happen in your browser memory. Close the tab and files are gone.</p></div>
+<div class="card"><div class="svg-ico">⚡</div><h3>No sign-up, no watermark</h3><p>Free JXL to JPG converter. Convert one file at a time, as many times as you like.</p></div>
+<div class="card"><div class="svg-ico">🖼️</div><h3>Quality you control</h3><p>JPG exports at high quality (0.92); pick PNG when you need lossless for graphics or text.</p></div>
+</section>
+
+<section class="faq">
+<details open><summary>Will converting JXL to JPG lose quality?</summary><p>Slightly: JPG is lossy while JPEG XL can be lossless. For photos the difference at quality 0.92 is hard to see. Keep your original .jxl if it matters.</p></details>
+<details><summary>Where is my converted file?</summary><p>In your downloads folder, named after the original (photo.jxl becomes photo.jpg). Nothing stays on our servers.</p></details>
+<details><summary>Can I convert JXL to PNG instead?</summary><p>Yes — use the Download PNG button for lossless output, better for screenshots and graphics.</p></details>
+<details><summary>Is there a file size limit?</summary><p>No upload limit since nothing is uploaded, but very large images (&gt;30 MP) may exceed what your browser can decode. You'll see a clear message.</p></details>
+<details><summary>Just want to view, not convert?</summary><p>Use the <a href="/">free JXL viewer →</a> or learn <a href="/how-to-open-jxl-file/">how to open JXL files →</a></p></details>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will converting JXL to JPG lose quality?","acceptedAnswer":{"@type":"Answer","text":"Slightly. JPG is lossy; exports use quality 0.92, visually near-identical for photos."}},{"@type":"Question","name":"Where is my converted file?","acceptedAnswer":{"@type":"Answer","text":"In your downloads folder, named after the original file. Nothing is uploaded."}}]}</script>
+<script is:inline src="/viewer.js" data-lang="en"></script>
+</Base>
