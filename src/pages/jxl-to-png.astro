@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base lang="en" title="JXL to PNG converter — convert JPEG XL online, lossless | Open JXL" description="Convert JXL to PNG in your browser. Drop a .jxl file, preview it, download lossless PNG. Nothing uploaded, free, no sign-up." path="/jxl-to-png/">
+<section class="page-hero">
+<span class="eyebrow">JXL → PNG · 100% local</span>
+<h1>Convert <span class="grad">JXL to PNG</span> online</h1>
+<p class="lead">Need a <strong>lossless PNG</strong> for screenshots, graphics or text? Drop your <strong>.jxl</strong> below — preview it on this device, then <strong>download PNG</strong>. Nothing is uploaded.</p>
+</section>
+
+<section class="tool-card" aria-label="JXL to PNG converter">
+<div class="tool-head"><span class="step-n">1</span> Drop your .jxl file <span style="color:var(--muted);font-weight:500">— decoded on this device</span></div>
+<div id="drop" tabindex="0" role="button" aria-label="Choose a .jxl file">
+<div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+<div id="drop-title">Drop a .jxl file</div>
+<div id="drop-sub">or click to choose, paste also works</div>
+<div class="drop-kbd"><span class="kbd">.jxl → .png</span><span class="kbd">drag &amp; drop</span><span class="kbd">Ctrl + V</span></div>
+<input id="file" type="file" accept=".jxl,image/jxl" hidden />
+</div>
+<p id="wasm-note"></p>
+<div id="err" hidden></div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">Decoding on this device...</span> <span id="secs">0</span>s</div>
+<div id="result" hidden>
+<div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Preview &amp; download PNG</div>
+<div class="result-grid">
+<div class="preview-frame"><img id="preview-img" hidden alt="jxl preview" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Fit</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
+<div>
+<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Local only</span></div>
+<div class="dl-row">
+<button id="dl-png" class="btn primary" disabled>Download PNG</button>
+<button id="dl-jpg" class="btn ghost" disabled>Download JPG</button>
+</div>
+<button id="again">Convert another file -></button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sections">
+<div class="card"><div class="svg-ico">🔒</div><h3>Private conversion</h3><p>Everything happens in your browser memory. Close the tab and files are gone.</p></div>
+<div class="card"><div class="svg-ico">⚡</div><h3>No sign-up, no watermark</h3><p>Free JXL to PNG converter. One file at a time, as many times as you like.</p></div>
+<div class="card"><div class="svg-ico">🖼️</div><h3>Truly lossless</h3><p>PNG preserves every pixel — ideal for screenshots, UI graphics, logos and text. For photos, <a href="/jxl-to-jpg/">JPG gives smaller files →</a></p></div>
+</section>
+
+<section class="faq">
+<details open><summary>JXL to PNG or JXL to JPG — which should I pick?</summary><p>PNG for screenshots, graphics, logos and anything with text (lossless, sharp edges). JPG for photos (much smaller files, tiny quality cost).</p></details>
+<details><summary>Will the PNG be large?</summary><p>Yes, lossless PNGs are bigger than JPGs — that's the trade for pixel-perfect quality. The file lands in your downloads folder named after the original.</p></details>
+<details><summary>Is there a file size limit?</summary><p>No upload limit since nothing is uploaded, but very large images (&gt;30 MP) may exceed what your browser can decode.</p></details>
+<details><summary>Just want to view, not convert?</summary><p>Use the <a href="/">free JXL viewer →</a> or learn <a href="/how-to-open-jxl-file/">how to open JXL files →</a></p></details>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"JXL to PNG or JXL to JPG — which should I pick?","acceptedAnswer":{"@type":"Answer","text":"PNG for screenshots and graphics (lossless). JPG for photos (smaller files)."}},{"@type":"Question","name":"Will the PNG be large?","acceptedAnswer":{"@type":"Answer","text":"Yes, lossless PNGs are bigger than JPGs. The file lands in your downloads folder."}}]}</script>
+<script is:inline src="/viewer.js" data-lang="en"></script>
+</Base>

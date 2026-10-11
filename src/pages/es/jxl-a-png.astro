@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="es" title="Convertir JXL a PNG online, gratis y sin pérdida | Open JXL" description="Convierte JXL a PNG en tu navegador. Suelta tu .jxl, previsualízalo y descarga el PNG sin pérdida. Gratis, nada se sube." path="/es/jxl-a-png/">
+<section class="page-hero">
+<span class="eyebrow">JXL → PNG · 100% local</span>
+<h1>Convertir <span class="grad">JXL a PNG</span> online</h1>
+<p class="lead">¿Necesitas un <strong>PNG sin pérdida</strong> para capturas o gráficos? Suelta tu <strong>.jxl</strong> aquí, míralo en tu dispositivo y <strong>descarga el PNG</strong>. Nada se sube.</p>
+</section>
+
+<section class="tool-card" aria-label="Convertidor JXL a PNG">
+<div class="tool-head"><span class="step-n">1</span> Suelta tu .jxl <span style="color:var(--muted);font-weight:500">— se decodifica en tu dispositivo</span></div>
+<div id="drop" tabindex="0" role="button" aria-label="Elegir archivo .jxl">
+<div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+<div id="drop-title">Suelta tu .jxl aquí</div>
+<div id="drop-sub">o toca para elegirlo desde tus archivos</div>
+<div class="drop-kbd"><span class="kbd">.jxl → .png</span><span class="kbd">arrastrar</span><span class="kbd">Ctrl + V</span></div>
+<input id="file" type="file" accept=".jxl,image/jxl" hidden />
+</div>
+<p id="wasm-note"></p>
+<div id="err" hidden></div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">Decodificando en tu dispositivo…</span> <span id="secs">0</span>s</div>
+<div id="result" hidden>
+<div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Vista previa y descargar PNG</div>
+<div class="result-grid">
+<div class="preview-frame"><img id="preview-img" hidden alt="vista jxl" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">Ajustar</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
+<div>
+<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Solo local</span></div>
+<div class="dl-row">
+<button id="dl-png" class="btn primary" disabled>Descargar PNG</button>
+<button id="dl-jpg" class="btn ghost" disabled>Descargar JPG</button>
+</div>
+<button id="again">Convertir otro →</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sections">
+<div class="card"><div class="svg-ico">🔒</div><h3>Conversión privada</h3><p>Todo pasa en tu navegador. Al cerrar la pestaña, nada queda.</p></div>
+<div class="card"><div class="svg-ico">⚡</div><h3>Gratis y sin marca</h3><p>Sin cuenta, de uno en uno, las veces que quieras.</p></div>
+<div class="card"><div class="svg-ico">🖼️</div><h3>Sin pérdida real</h3><p>El PNG conserva cada píxel: ideal para capturas, interfaces y texto. Para fotos, el <a href="/es/jxl-a-jpg/">JPG pesa mucho menos →</a></p></div>
+</section>
+
+<section class="faq">
+<details open><summary>¿JXL a PNG o JXL a JPG?</summary><p>PNG para capturas, gráficos y texto (sin pérdida, bordes nítidos). JPG para fotos (archivos mucho más pequeños).</p></details>
+<details><summary>¿El PNG será pesado?</summary><p>Sí, el PNG sin pérdida pesa más que el JPG. Queda en tu carpeta de descargas con el mismo nombre.</p></details>
+<details><summary>¿Solo quieres verlo?</summary><p>Usa el <a href="/es/">visor JXL gratis →</a> o lee <a href="/es/how-to-open-jxl-file/">cómo abrir JXL →</a></p></details>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿JXL a PNG o JXL a JPG?","acceptedAnswer":{"@type":"Answer","text":"PNG para capturas y gráficos (sin pérdida). JPG para fotos (más liviano)."}},{"@type":"Question","name":"¿El PNG será pesado?","acceptedAnswer":{"@type":"Answer","text":"Sí, el PNG sin pérdida pesa más. Queda en tu carpeta de descargas."}}]}</script>
+<script is:inline src="/viewer.js" data-lang="es"></script>
+</Base>

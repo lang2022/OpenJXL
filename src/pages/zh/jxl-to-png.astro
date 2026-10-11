@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="zh" title="JXL 转 PNG｜本地免费无损转换 | Open JXL" description="JXL 转 PNG 免费工具：在浏览器里打开 .jxl 文件，预览后下载无损 PNG。文件不上传，无需注册。" path="/zh/jxl-to-png/">
+<section class="page-hero">
+<span class="eyebrow">JXL → PNG · 本地转换</span>
+<h1><span class="grad">JXL 转 PNG</span>，无损导出</h1>
+<p class="lead">截图、图表、带文字的图片要<strong>无损 PNG</strong>？把 <strong>.jxl</strong> 拖进来，在本机预览，然后<strong>下载 PNG</strong>。文件不上传。</p>
+</section>
+
+<section class="tool-card" aria-label="JXL 转 PNG 工具">
+<div class="tool-head"><span class="step-n">1</span> 拖入 .jxl 文件 <span style="color:var(--muted);font-weight:500">— 在本机解码</span></div>
+<div id="drop" tabindex="0" role="button" aria-label="选择 .jxl 文件">
+<div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+<div id="drop-title">拖入 .jxl 文件</div>
+<div id="drop-sub">或点击选择，也可粘贴</div>
+<div class="drop-kbd"><span class="kbd">.jxl → .png</span><span class="kbd">拖放</span><span class="kbd">Ctrl + V</span></div>
+<input id="file" type="file" accept=".jxl,image/jxl" hidden />
+</div>
+<p id="wasm-note"></p>
+<div id="err" hidden></div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">正在本机解码…</span> <span id="secs">0</span>s</div>
+<div id="result" hidden>
+<div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> 预览并下载 PNG</div>
+<div class="result-grid">
+<div class="preview-frame"><img id="preview-img" hidden alt="jxl 预览" /><canvas id="preview" hidden></canvas></div>
+<div class="zoom-bar" id="zoom-bar"><button id="z-in" class="btn ghost" type="button">＋</button><button id="z-out" class="btn ghost" type="button">－</button><button id="z-fit" class="btn ghost" type="button">适应</button><button id="z-full" class="btn ghost" type="button">⛶</button><button id="z-open" class="btn ghost" type="button">↗</button></div>
+<div>
+<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">仅本地</span></div>
+<div class="dl-row">
+<button id="dl-png" class="btn primary" disabled>下载 PNG</button>
+<button id="dl-jpg" class="btn ghost" disabled>下载 JPG</button>
+</div>
+<button id="again">再转一个 -></button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="sections">
+<div class="card"><div class="svg-ico">🔒</div><h3>本地转换</h3><p>一切在浏览器内存里完成，关闭页面即销毁。</p></div>
+<div class="card"><div class="svg-ico">⚡</div><h3>免费无水印</h3><p>无需注册，一次转一张，可反复使用。</p></div>
+<div class="card"><div class="svg-ico">🖼️</div><h3>真正无损</h3><p>PNG 保留每个像素，适合截图、界面、Logo 和文字图。照片选 <a href="/zh/jxl-to-jpg/">JXL 转 JPG →</a> 文件更小。</p></div>
+</section>
+
+<section class="faq">
+<details open><summary>JXL 转 PNG 还是转 JPG？</summary><p>截图、图表、Logo 和文字图选 PNG（无损、边缘锐利）。照片选 JPG（文件小得多，画质几乎无差）。</p></details>
+<details><summary>PNG 会很大吗？</summary><p>会，无损 PNG 天然比 JPG 大，这是像素级保真的代价。文件保存在下载目录，沿用原名。</p></details>
+<details><summary>只想看图不想转？</summary><p>用<a href="/zh/">免费 JXL 查看器 →</a>，或看<a href="/zh/how-to-open-jxl-file/">JXL 文件怎么打开 →</a></p></details>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"JXL 转 PNG 还是转 JPG？","acceptedAnswer":{"@type":"Answer","text":"截图和图表选 PNG（无损），照片选 JPG（更小）。"}},{"@type":"Question","name":"PNG 会很大吗？","acceptedAnswer":{"@type":"Answer","text":"会，无损 PNG 比 JPG 大。文件保存在下载目录。"}}]}</script>
+<script is:inline src="/viewer.js" data-lang="zh"></script>
+</Base>

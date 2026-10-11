@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="zh" title="JXL 打不开？解码失败、文件太大的修复方法 | Open JXL" description="修复常见 JXL 错误：不是 JPEG XL 文件、解码失败、不支持动画、图片太大。每种错误都有原因和本地修复方法。" path="/zh/jxl-errors/">
+<section class="page-hero">
+<span class="eyebrow">错误诊断</span>
+<h1>JXL 文件<span class="grad">打不开？</span>对号入座</h1>
+<p class="lead">对照下面的报错信息，每条都有原因和修复方法，所有检查都在<strong>本机</strong>完成。</p>
+</section>
+
+<section class="cta-banner">
+<div class="cta-text"><strong>最快验证：重新拖一次</strong><p>偶发解码失败，重试一次多半就好。</p></div>
+<a class="btn primary" href="/zh/">打开查看器 →</a>
+</section>
+
+<section class="faq">
+<details open><summary>“这不像 JPEG XL 文件。”</summary><p><strong>原因：</strong>文件头不是 JXL——多半是改了后缀的 .jpg/.png，或下载没下全。<br/><strong>办法：</strong>确认后缀是 .jxl，重新下载一份。JPG 改名成 .jxl 永远解不出来。</p></details>
+<details open><summary>“无法解码。文件可能已损坏。”</summary><p><strong>原因：</strong>JXL 数据流损坏或不完整。<br/><strong>办法：</strong>从源头重新导出一份干净的；如果别的软件（如 ImageMagick）能打开，重存一份再试。</p></details>
+<details><summary>“V1 暂不支持动画 JPEG XL。”</summary><p><strong>原因：</strong>这是动画 JXL，V1 只处理第一帧。<br/><strong>办法：</strong>在这里把第一帧导出 JPG/PNG；要完整动画用桌面 libjxl 工具（djxl）。</p></details>
+<details><summary>“图片太大，当前浏览器无法预览。”</summary><p><strong>原因：</strong>像素数超过浏览器标签页上限（约 30MP，看设备）。<br/><strong>办法：</strong>换小一点的图、用桌面浏览器，或先在源头降尺寸再转。</p></details>
+<details><summary>“V1 每次仅打开一个文件。”</summary><p><strong>原因：</strong>一次拖了多个文件。<br/><strong>办法：</strong>不算报错——已用了第一个，逐个拖即可。（批量转换在路线图上。）</p></details>
+<details><summary>一直卡在“正在检测…”？</summary><p><strong>原因：</strong>解码脚本或测试文件没加载出来（断网、拦截插件）。<br/><strong>办法：</strong>约 8 秒后会出现“重新检测”按钮，点它重载页面，并放行 <code>/viewer.js</code> 和 <code>/jxl-worker.js</code>。</p></details>
+</section>
+
+<section class="card mini-cta" style="margin-top:22px"><h3>还没解决？</h3><p>记下文件大小和浏览器版本再反馈，或先拿好的文件试<a href="/zh/jxl-to-jpg/"> JXL 转 JPG →</a></p></section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"JXL 文件为什么打不开？","acceptedAnswer":{"@type":"Answer","text":"多半是改后缀的 JPG/PNG 或下载不完整，重新下载并确认 .jxl 后缀。"}},{"@type":"Question","name":"JXL 解码失败怎么办？","acceptedAnswer":{"@type":"Answer","text":"数据流损坏，从源头重新导出一份干净的文件。"}}]}</script>
+</Base>

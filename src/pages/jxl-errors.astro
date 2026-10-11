@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base lang="en" title="JXL errors fixed — cannot open, decode failed, file too large | Open JXL" description="Fix common JXL errors: not a JPEG XL file, decode failed, animated not supported, image too large. Diagnose and fix each one locally." path="/jxl-errors/">
+<section class="page-hero">
+<span class="eyebrow">Error diagnosis</span>
+<h1>JXL file <span class="grad">won't open?</span> Fix it here</h1>
+<p class="lead">Match your error message below — each one has a cause and a fix. All checks run <strong>on this device</strong>.</p>
+</section>
+
+<section class="cta-banner">
+<div class="cta-text"><strong>Fastest test: try the file again</strong><p>Re-drop it in the viewer — transient decoder failures often pass on retry.</p></div>
+<a class="btn primary" href="/">Open the viewer →</a>
+</section>
+
+<section class="faq">
+<details open><summary>“This does not look like a JPEG XL file.”</summary><p><strong>Cause:</strong> the file header isn't JXL — usually a renamed .jpg/.png/.webp, or a truncated download.<br/><strong>Fix:</strong> check the extension, re-download the file, and confirm it ends in .jxl. Files renamed from JPG will never decode as JXL.</p></details>
+<details open><summary>“Could not decode this file. It may be damaged.”</summary><p><strong>Cause:</strong> corrupt or incomplete JXL stream.<br/><strong>Fix:</strong> re-download or re-export from the source. If it opens in another app (e.g. ImageMagick), re-save a clean copy and try again. Still failing? <a href="/jxl-to-jpg/">Convert a working JXL to JPG →</a></p></details>
+<details><summary>“V1 does not support animated JPEG XL.”</summary><p><strong>Cause:</strong> the file is an animated JXL; V1 shows the first frame only in some paths.<br/><strong>Fix:</strong> export the first frame as JPG/PNG here, or use desktop libjxl tools (djxl) for full animation support.</p></details>
+<details><summary>“This image is too large for this browser.”</summary><p><strong>Cause:</strong> pixel count exceeds what this browser tab can decode (roughly &gt;30 MP depending on device).<br/><strong>Fix:</strong> try a smaller export, use a desktop browser with more memory, or downscale at the source before converting.</p></details>
+<details><summary>“V1 opens one file at a time.”</summary><p><strong>Cause:</strong> you dropped several files at once.<br/><strong>Fix:</strong> not an error — the first file was used. Drop the next one to continue. (Batch conversion is on the roadmap.)</p></details>
+<details><summary>Stuck on “Checking…” forever?</summary><p><strong>Cause:</strong> the decoder script or test fixture failed to load (offline, blocker, or CDN hiccup).<br/><strong>Fix:</strong> after ~8 seconds you'll see a Retry button — reload the page, disable aggressive blockers for this site, and make sure <code>/viewer.js</code> and <code>/jxl-worker.js</code> load.</p></details>
+</section>
+
+<section class="card mini-cta" style="margin-top:22px"><h3>Still stuck?</h3><p>File a note with the file size and browser version — or try converting a <a href="/jxl-to-jpg/">known-good JXL to JPG →</a></p></section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does my JXL file not look like a JPEG XL file?","acceptedAnswer":{"@type":"Answer","text":"Usually a renamed JPG/PNG or truncated download. Re-download and confirm the .jxl extension."}},{"@type":"Question","name":"Why does JXL decoding fail?","acceptedAnswer":{"@type":"Answer","text":"Corrupt or incomplete stream. Re-export a clean copy from the source."}},{"@type":"Question","name":"Why is my JXL image too large to open?","acceptedAnswer":{"@type":"Answer","text":"Pixel count exceeds browser limits (~30 MP). Try a smaller export or desktop browser."}}]}</script>
+</Base>

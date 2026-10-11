@@ -94,7 +94,8 @@ function doneMeta(w,h,size,how,kind,url,note){
   var box=$('meta');
   if(box){
     box.innerHTML='';
-    var items=[lastName + '.jxl', w + 'x' + h, fmt(size), ms + ' ms', how];
+    var mp = (w*h/1000000); var mpTxt = mp >= 0.1 ? mp.toFixed(1)+' MP' : (w*h/1000).toFixed(0)+' Kpx';
+    var items=[lastName + '.jxl', w + 'x' + h, mpTxt, fmt(size), ms + ' ms', how];
     if(note) items.push(note);
     for(var ci=0; ci<items.length; ci++){ var cp=document.createElement('span'); cp.className='chip'; cp.textContent=items[ci]; box.appendChild(cp); }
   }

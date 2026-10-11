@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="es" title="Mi JXL no se abre: errores y soluciones | Open JXL" description="Soluciona errores JXL comunes: no parece JPEG XL, no se pudo decodificar, animado no admitido, imagen demasiado grande." path="/es/errores-jxl/">
+<section class="page-hero">
+<span class="eyebrow">Diagnóstico</span>
+<h1>¿Tu JXL <span class="grad">no se abre?</span> Busca tu error</h1>
+<p class="lead">Encuentra tu mensaje abajo: cada uno tiene causa y solución. Todo se comprueba <strong>en tu dispositivo</strong>.</p>
+</section>
+
+<section class="cta-banner">
+<div class="cta-text"><strong>Lo más rápido: inténtalo de nuevo</strong><p>Vuelve a soltar el archivo en el visor; los fallos puntuales suelen pasar al reintentar.</p></div>
+<a class="btn primary" href="/es/">Abrir el visor →</a>
+</section>
+
+<section class="faq">
+<details open><summary>«Esto no parece un archivo JPEG XL.»</summary><p><strong>Causa:</strong> la cabecera no es JXL: suele ser un .jpg/.png renombrado o una descarga incompleta.<br/><strong>Solución:</strong> confirma la extensión .jxl y descarga el archivo de nuevo. Un JPG renombrado jamás se decodificará como JXL.</p></details>
+<details open><summary>«No se pudo decodificar.»</summary><p><strong>Causa:</strong> datos JXL dañados o incompletos.<br/><strong>Solución:</strong> vuelve a exportar desde el origen. Si otra app (p. ej. ImageMagick) lo abre, guarda una copia limpia e inténtalo de nuevo.</p></details>
+<details><summary>«La V1 no admite animados.»</summary><p><strong>Causa:</strong> es un JXL animado; la V1 solo maneja el primer fotograma.<br/><strong>Solución:</strong> exporta el primer fotograma como JPG/PNG aquí, o usa las herramientas libjxl de escritorio (djxl) para la animación completa.</p></details>
+<details><summary>«Imagen demasiado grande.»</summary><p><strong>Causa:</strong> supera lo que puede decodificar la pestaña (~30 MP según el dispositivo).<br/><strong>Solución:</strong> prueba con una versión más pequeña, usa un navegador de escritorio o reduce el tamaño en el origen.</p></details>
+<details><summary>«La V1 abre un archivo a la vez.»</summary><p><strong>Causa:</strong> soltaste varios archivos juntos.<br/><strong>Solución:</strong> no es un error: se usó el primero. Suéltalos de uno en uno.</p></details>
+<details><summary>¿Se queda en «Comprobando…»?</summary><p><strong>Causa:</strong> el script o el archivo de prueba no cargó (sin conexión, bloqueador).<br/><strong>Solución:</strong> en ~8 segundos aparece «Reintentar»: recarga y permite <code>/viewer.js</code> y <code>/jxl-worker.js</code>.</p></details>
+</section>
+
+<section class="card mini-cta" style="margin-top:22px"><h3>¿Sigue sin funcionar?</h3><p>Anota el tamaño del archivo y tu navegador, o prueba con un <a href="/es/jxl-a-jpg/">JXL bueno a JPG →</a></p></section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Por qué mi JXL no se abre?","acceptedAnswer":{"@type":"Answer","text":"Suele ser un JPG renombrado o una descarga incompleta. Descarga de nuevo y confirma la extensión .jxl."}},{"@type":"Question","name":"¿Por qué falla la decodificación JXL?","acceptedAnswer":{"@type":"Answer","text":"Datos dañados. Vuelve a exportar una copia limpia desde el origen."}}]}</script>
+</Base>
