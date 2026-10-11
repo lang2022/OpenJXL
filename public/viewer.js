@@ -1,21 +1,40 @@
 (function(){
 var lang = (document.currentScript && document.currentScript.dataset.lang) || 'en';
 var S = {
-en: { running:'Checking JPEG XL support…', native:'This browser can display JPEG XL natively.', wasm:'This browser cannot display JPEG XL natively. Local decoder enabled.', fail:'Could not load the local decoder. Try Chrome, Firefox, Safari, or Edge.', loading:'Decoding on this device…', notjxl:'This does not look like a JPEG XL file.', corrupt:'Could not decode this file. It may be damaged.', animated:'V1 does not support animated JPEG XL.', large:'This image is too large for this browser. Try a smaller file.', multi:'V1 opens one file at a time. Using the first file.', tagline:'Preview JPEG XL (.jxl) locally. Nothing is uploaded.', dropT:'Drop a .jxl file', dropS:'or click to choose, paste also works', first:'First visit loads a local decoder (~0.9 MB), then works offline for this session.', jpg:'Download JPG', png:'Download PNG', paste:'Please paste a .jxl file, not a decoded image.', frame:'Note: animated images show the first frame only.', hint:'Prefer Chinese? View the Chinese version.' },
-zh: { running:'正在检测浏览器是否支持 JPEG XL…', native:'当前浏览器可原生显示 JPEG XL。', wasm:'当前浏览器不能原生显示 JPEG XL。已启用本地解码。', fail:'本地解码组件加载失败。请改用 Chrome、Firefox、Safari 或 Edge。', loading:'正在本机解码…', notjxl:'这不像 JPEG XL 文件。', corrupt:'无法解码。文件可能已损坏。', animated:'V1 暂不支持动画 JPEG XL。', large:'图片太大，当前浏览器无法预览。请换更小的文件。', multi:'V1 每次仅打开一个文件，已使用第一份。', tagline:'本地预览 JPEG XL（.jxl）。文件不上传。', dropT:'拖入 .jxl 文件', dropS:'或点击选择，也可粘贴', first:'首次访问会加载本地解码组件（约 0.9 MB），之后本会话可继续使用。', jpg:'下载 JPG', png:'下载 PNG', paste:'请粘贴 .jxl 文件，而不是已解码的图片', frame:'说明：动画图片仅显示第一帧。', hint:'Prefer English? View the English version.' }
+en: { running:'Checking JPEG XL support…', native:'This browser can display JPEG XL natively.', wasm:'This browser cannot display JPEG XL natively. Local decoder enabled.', fail:'Could not load the local decoder. Try Chrome, Firefox, Safari, or Edge.', loading:'Decoding on this device…', notjxl:'This does not look like a JPEG XL file.', corrupt:'Could not decode this file. It may be damaged.', animated:'V1 does not support animated JPEG XL.', large:'This image is too large for this browser. Try a smaller file.', multi:'V1 opens one file at a time. Using the first file.', tagline:'Preview JPEG XL (.jxl) locally. Nothing is uploaded.', dropT:'Drop a .jxl file', dropS:'or tap to choose from your files', dropSDesktop:'or click to choose, paste also works', first:'First visit loads a local decoder (~0.9 MB), then works offline for this session.', jpg:'Download JPG', png:'Download PNG', paste:'Please paste a .jxl file, not a decoded image.', frame:'Note: animated images show the first frame only.', hint:'Prefer Chinese? View the Chinese version.', sample:'Try a sample file' },
+zh: { running:'正在检测浏览器是否支持 JPEG XL…', native:'当前浏览器可原生显示 JPEG XL。', wasm:'当前浏览器不能原生显示 JPEG XL。已启用本地解码。', fail:'本地解码组件加载失败。请改用 Chrome、Firefox、Safari 或 Edge。', loading:'正在本机解码…', notjxl:'这不像 JPEG XL 文件。', corrupt:'无法解码。文件可能已损坏。', animated:'V1 暂不支持动画 JPEG XL。', large:'图片太大，当前浏览器无法预览。请换更小的文件。', multi:'V1 每次仅打开一个文件，已使用第一份。', tagline:'本地预览 JPEG XL（.jxl）。文件不上传。', dropT:'拖入 .jxl 文件', dropS:'或点此从文件里选择', dropSDesktop:'或点击选择，也可粘贴', first:'首次访问会加载本地解码组件（约 0.9 MB），之后本会话可继续使用。', jpg:'下载 JPG', png:'下载 PNG', paste:'请粘贴 .jxl 文件，而不是已解码的图片', frame:'说明：动画图片仅显示第一帧。', hint:'Prefer English? View the English version.', sample:'试用示例文件' },
+es: { running:'Comprobando si tu navegador muestra JPEG XL…', native:'Este navegador muestra JPEG XL de forma nativa.', wasm:'Este navegador no muestra JPEG XL de forma nativa. Decodificador local activado.', fail:'No se pudo cargar el decodificador local. Prueba con Chrome, Firefox, Safari o Edge.', loading:'Decodificando en tu dispositivo…', notjxl:'Esto no parece un archivo JPEG XL (.jxl).', corrupt:'No se pudo decodificar. El archivo puede estar dañado.', animated:'La V1 no admite JPEG XL animado. Se muestra el primer fotograma.', large:'Imagen demasiado grande para este navegador. Prueba con una más pequeña (ideal < 30 MP).', multi:'La V1 abre un archivo a la vez. Usando el primero.', tagline:'Previsualiza JPEG XL (.jxl) en tu dispositivo. Nada se sube.', dropT:'Suelta tu .jxl aquí', dropS:'o toca para elegirlo desde tus archivos', dropSDesktop:'o haz clic para elegir, también puedes pegar (Ctrl+V)', first:'La primera visita carga el decodificador local (~0.9 MB); después funciona sin conexión en esta sesión.', jpg:'Descargar JPG', png:'Descargar PNG', paste:'Pega un archivo .jxl, no una imagen ya decodificada.', frame:'Nota: en animados solo se muestra el primer fotograma.', hint:'¿Prefieres español? Ver la versión en español.', sample:'Probar con un ejemplo' }
 }[lang] || {};
 function $(id){ return document.getElementById(id); }
 function setT(id, v){ var e=$(id); if(e) e.textContent=v; return e; }
 setT('tagline2', S.tagline); setT('drop-title', S.dropT); setT('drop-sub', S.dropS);
 setT('wasm-note', S.first); setT('loading-t', S.loading); setT('dl-jpg', S.jpg); setT('dl-png', S.png);
-var foot = document.getElementById('seo-foot'); if(foot) foot.textContent = lang==='zh' ? 'JPEG XL 是一种图片格式。Open JXL 是本地查看器，与车机摄像头或 Java 库无关。' : 'JPEG XL is an image format. Open JXL is a local viewer, not a camera app or Java library.';
+var foot = document.getElementById('seo-foot'); if(foot) foot.textContent = lang==='zh' ? 'JPEG XL 是一种图片格式。Open JXL 是本地查看器，与车机摄像头或 Java 库无关。' : lang==='es' ? 'JPEG XL es un formato de imagen. Open JXL es un visor local, no una app de cámara ni una librería Java.' : 'JPEG XL is an image format. Open JXL is a local viewer, not a camera app or Java library.';
 (function langHint(){
   try{
     var nav = (navigator.language || '').toLowerCase();
     var bar = document.getElementById('lang-hint');
     if(!bar) return;
-    if(lang === 'en' && nav.indexOf('zh') === 0){ bar.hidden = false; bar.innerHTML = ''; var a = document.createElement('a'); a.href = '/zh/'; a.textContent = S.hint; bar.appendChild(a); }
-    else if(lang === 'zh' && nav.indexOf('zh') !== 0 && nav.indexOf('en') === 0){ bar.hidden = false; bar.innerHTML = ''; var b = document.createElement('a'); b.href = '/'; b.textContent = S.hint; bar.appendChild(b); }
+    function link(href, txt){ bar.hidden = false; bar.innerHTML = ''; var a = document.createElement('a'); a.href = href; a.textContent = txt; bar.appendChild(a); }
+    if(lang === 'en' && nav.indexOf('zh') === 0){ link('/zh/', S.hint); }
+    else if(lang === 'en' && nav.indexOf('es') === 0){ link('/es/', S.hint); }
+    else if(lang === 'zh' && nav.indexOf('es') === 0){ link('/es/', S.hint); }
+    else if(lang === 'es' && nav.indexOf('en') === 0){ link('/', S.hint); }
+    else if(lang === 'zh' && nav.indexOf('zh') !== 0 && nav.indexOf('en') === 0){ link('/', S.hint); }
+    else if(lang === 'es' && nav.indexOf('es') !== 0){ link('/', S.hint); }
+  }catch(e){}
+})();
+(function touchCopy(){
+  try{
+    var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if(touch){
+      if(lang !== 'es' && S.dropS && S.dropS.indexOf('toca') !== -1){ /* es already touch-first */ }
+      setT('drop-sub', S.dropS);
+      var kb = document.querySelector('.drop-kbd');
+      if(kb) kb.style.display = 'none';
+    } else {
+      if(S.dropSDesktop) setT('drop-sub', S.dropSDesktop);
+    }
   }catch(e){}
 })();
 var mode = 'unknown', worker = null, lastName = 'image', startT = 0, timer = null;
@@ -115,6 +134,15 @@ inp.addEventListener('change',function(){ var fs=Array.prototype.slice.call(inp.
 drop.addEventListener('drop',function(e){ var fs=(e.dataTransfer&&e.dataTransfer.files)?Array.prototype.slice.call(e.dataTransfer.files):[]; if(fs.length>1) alert(S.multi); if(fs[0]) handleFile(fs[0]); });
 document.addEventListener('paste',function(e){ var fs=(e.clipboardData&&e.clipboardData.files)?Array.prototype.slice.call(e.clipboardData.files):[]; if(!fs.length) return; var f=fs[0]; if(!(/\.jxl$/i.test(f.name)) && f.type!=='image/jxl'){ alert(S.paste); return; } handleFile(f); });
 $('again').onclick=function(){ var r=$('result'),e=$('err'); if(r) r.hidden=true; if(e) e.hidden=true; };
+(function sampleBtn(){
+  try{
+    var dropEl=$('drop'); if(!dropEl || $('try-sample')) return;
+    var b=document.createElement('button'); b.id='try-sample'; b.className='btn ghost'; b.type='button';
+    b.style.cssText='margin:14px auto 0'; b.textContent=S.sample||'Try a sample';
+    b.onclick=function(ev){ ev.stopPropagation(); fetch('/fixtures/tiny.jxl').then(function(r){ if(!r.ok) throw 0; return r.blob(); }).then(function(bl){ handleFile(new File([bl],'sample.jxl',{type:'image/jxl'})); }).catch(function(){ showErr(S.corrupt,'CORRUPT'); }); };
+    dropEl.insertAdjacentElement('afterend', b);
+  }catch(e){}
+})();
 }catch(e){}
 try{ detectNative(); }catch(e){}
 })();

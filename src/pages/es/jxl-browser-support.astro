@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="es" title="Soporte JPEG XL en navegadores | Open JXL" description="Comprueba si este navegador muestra JPEG XL de forma nativa." path="/es/jxl-browser-support/">
+<section class="page-hero">
+<span class="eyebrow">Prueba en vivo</span>
+<h1>¿Este navegador <span class="grad">soporta JPEG XL?</span></h1>
+<p class="lead">El resultado solo refleja este navegador, probado localmente en tu dispositivo.</p>
+</section>
+
+<section class="card verdict">
+<div id="s" class="verdict-big">Comprobando…</div>
+<p class="verdict-note">¿Sin soporte nativo? No pasa nada: el visor usa un decodificador local. Eso no significa que las imágenes públicas <code>&lt;img src=".jxl"&gt;</code> funcionen en la web.</p>
+</section>
+
+<section class="sections" style="grid-template-columns:1fr 1fr">
+<div class="card mini-cta"><h3>¿Tienes un archivo para ver?</h3><p>Previsualízalo localmente en segundos.</p><p><a class="btn primary" href="/es/">Ver un .jxl →</a></p></div>
+<div class="card mini-cta"><h3>¿Nuevo en este formato?</h3><p>Aprende qué es un archivo .jxl.</p><p><a class="btn ghost" href="/es/how-to-open-jxl-file/">Cómo abrir →</a></p></div>
+</section>
+<script is:inline src="/support-check.js" data-lang="es"></script>
+</Base>

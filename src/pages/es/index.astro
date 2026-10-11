@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base lang="es" title="Visor JPEG XL online — abrir .jxl sin instalar | Open JXL" description="Visor JPEG XL local. Comprueba soporte, previsualiza .jxl y guarda JPG o PNG. Nada se sube." path="/es/">
+<section class="hero">
+<span class="eyebrow">100% local · Sin subir · Gratis</span>
+<h1>Abre archivos <span class="grad">JPEG XL</span> en tu navegador</h1>
+<p class="lead">¿Tienes un <strong>.jxl</strong> que no puedes abrir? Suéltalo aquí para verlo en tu dispositivo y guarda JPG o PNG.</p>
+<p id="tagline2" hidden></p>
+<div><span id="status" class="pill"><span class="dot"></span><span>Comprobando…</span></span></div>
+</section>
+<section class="tool-card" aria-label="Visor JXL">
+<div class="tool-head"><span class="step-n">1</span> Suelta tu .jxl <span style="color:var(--muted);font-weight:500">— un archivo, en tu dispositivo</span></div>
+<div id="drop" tabindex="0" role="button" aria-label="Elegir archivo .jxl">
+<div class="drop-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+<div id="drop-title">Suelta un .jxl</div>
+<div id="drop-sub">o haz clic / pega</div>
+<div class="drop-kbd"><span class="kbd">.jxl</span><span class="kbd">arrastrar</span><span class="kbd">Ctrl + V</span></div>
+<input id="file" type="file" accept=".jxl,image/jxl" hidden />
+</div>
+<p id="wasm-note"></p>
+<div id="err" hidden></div>
+<div id="loading" hidden><div class="spinner"></div><span id="loading-t">Decodificando…</span> <span id="secs">0</span>s</div>
+<div id="result" hidden>
+<div class="tool-head" style="border:none;padding:0 0 14px"><span class="step-n">2</span> Vista previa y exportar</div>
+<div class="result-grid">
+<div class="preview-frame"><img id="preview-img" hidden alt="vista jxl" /><canvas id="preview" hidden></canvas></div>
+<div>
+<div class="chips"><span id="meta" style="display:contents"></span><span class="chip hot">Solo local</span></div>
+<div class="dl-row">
+<button id="dl-jpg" class="btn primary" disabled>Descargar JPG</button>
+<button id="dl-png" class="btn ghost" disabled>Descargar PNG</button>
+</div>
+<button id="again">Abrir otro →</button>
+</div>
+</div>
+</div>
+</section>
+<section class="card intro">
+<h2>¿Qué es JPEG XL (.jxl)?</h2>
+<p>JPEG XL es un formato moderno, más pequeño y mejor que JPEG. Si buscas cómo abrir un archivo JXL o un visor de imágenes JPEG XL sin instalar nada ni ver anuncios, suéltalo arriba.</p>
+</section>
+<script is:inline src="/viewer.js" data-lang="es"></script>
+</Base>

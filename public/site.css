@@ -13,6 +13,13 @@ a{color:var(--brand)}
 .lang-sw{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:8px}
 .lang-sw a{padding:7px 13px;font-size:13px}
 .lang-sw a.on{background:var(--ink);color:#fff}
+.lang-menu{position:relative;margin-left:8px}
+.lang-menu summary{list-style:none;cursor:pointer;font-size:13px;font-weight:700;color:#334155;border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:#fff}
+.lang-menu summary::-webkit-details-marker{display:none}
+.lang-menu[open] summary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lang-list{position:absolute;right:0;top:calc(100% + 8px);min-width:150px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:6px;display:flex;flex-direction:column;z-index:30}
+.lang-list a{font-size:13px;padding:9px 12px;border-radius:9px;white-space:nowrap}
+.lang-list a.on{background:#eef2ff;color:var(--brand)}
 main{max-width:1080px;margin:0 auto;padding:0 20px 64px}
 .hero{text-align:center;padding:52px 0 8px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--brand);background:#eef2ff;border:1px solid #e0e7ff;padding:6px 14px;border-radius:999px;margin-bottom:16px}
@@ -53,7 +60,7 @@ main{max-width:1080px;margin:0 auto;padding:0 20px 64px}
 .chip{font-size:13px;font-weight:600;background:#f1f5f9;border:1px solid var(--line);border-radius:999px;padding:6px 13px;color:#334155}
 .chip.hot{background:#eef2ff;border-color:#c7d2fe;color:var(--brand)}
 .dl-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 12px}
-@media(max-width:430px){.dl-row{grid-template-columns:1fr}.hero{padding:36px 0 4px}#drop{padding:36px 16px}}
+@media(max-width:430px){.dl-row{grid-template-columns:1fr}.hero{padding:36px 0 4px}#drop{padding:44px 18px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center}.btn{min-height:52px;font-size:16px}#drop-title{font-size:19px}.topnav a{padding:10px 12px;font-size:15px}}
 button{font:inherit;cursor:pointer}
 .btn{padding:14px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
 .btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:var(--shadow)}

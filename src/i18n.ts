@@ -1,5 +1,5 @@
-export type Lang = 'en' | 'zh';
-export const SITE = 'https://example.com';
+export type Lang = 'en' | 'zh' | 'es';
+export const SITE = 'https://openjxlfile.com';
 export const dict = {
 en: {
 brand: 'Open JXL',
@@ -40,6 +40,26 @@ err_too_large: '图片太大，当前浏览器无法预览。请换更小的文�
 err_multi: 'V1 每次仅打开一个文件，已使用第一份。',
 footer_seo: 'JPEG XL 是一种图片格式。Open JXL 是本地查看器，与车机摄像头或 Java 库无关。',
 meta_native: '原生', meta_wasm: '本地解码',
+},
+es: {
+brand: 'Open JXL',
+tagline: 'Previsualiza JPEG XL (.jxl) localmente. Nada se sube.',
+nav_how: 'Cómo abrir', nav_support: 'Soporte', nav_privacy: 'Privacidad',
+detect_running: 'Comprobando soporte JPEG XL…',
+detect_native: 'Este navegador muestra JPEG XL de forma nativa.',
+detect_wasm: 'Este navegador no muestra JPEG XL nativo. Decodificador local activado.',
+detect_fail: 'No se pudo cargar el decodificador. Prueba Chrome, Firefox, Safari o Edge.',
+drop_title: 'Suelta un .jxl', drop_sub: 'o haz clic / pega',
+loading: 'Decodificando en tu dispositivo…',
+wasm_first: 'La primera visita carga un decodificador (~0.7 MB), luego funciona sin conexión.',
+btn_jpg: 'Descargar JPG', btn_png: 'Descargar PNG',
+err_not_jxl: 'No parece un archivo JPEG XL.',
+err_corrupt: 'No se pudo decodificar. Puede estar dañado.',
+err_animated: 'V1 no soporta JPEG XL animado.',
+err_too_large: 'Imagen demasiado grande para este navegador. Prueba una más pequeña.',
+err_multi: 'V1 abre un archivo a la vez. Usando el primero.',
+footer_seo: 'JPEG XL es un formato de imagen. Open JXL es un visor local, no una app de cámara ni librería Java.',
+meta_native: 'Nativo', meta_wasm: 'Local',
 },
 } as const;
 export function t(lang: Lang, key: keyof (typeof dict)['en']): string { return (dict[lang] as any)[key] ?? (dict.en as any)[key]; }

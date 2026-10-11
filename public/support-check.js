@@ -2,6 +2,8 @@
 var lang = (document.currentScript && document.currentScript.dataset.lang) || 'en';
 var T = lang === 'zh'
   ? { yes: '原生支持：是', no: '原生支持：否（可用本地解码预览）', checking: '检测中' }
+  : lang === 'es'
+  ? { yes: 'Soporte nativo: SÍ', no: 'Soporte nativo: NO (puedes verlo con decodificador local)', checking: 'Comprobando' }
   : { yes: 'Native support: YES', no: 'Native support: NO (local decoder available)', checking: 'Checking' };
 fetch('/fixtures/tiny.jxl').then(function(r){ if(!r.ok) throw 0; return r.arrayBuffer(); }).then(function(b){
   var u=URL.createObjectURL(new Blob([b],{type:'image/jxl'})); var i=new Image(); var d=false;
